@@ -1,0 +1,3238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Churn Toteat — 31/03/2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+         background: #F5F5F5; color: #1B1B1B; font-size: 13px; }
+  .topbar { background: #1B1B1B; color: white; padding: 14px 28px;
+             display: flex; align-items: center; justify-content: space-between; }
+  .topbar h1 { font-size: 18px; font-weight: 700; }
+  .topbar h1 em { color: #FF4B33; font-style: normal; }
+  .topbar .meta { font-size: 12px; color: #aaa; }
+  .kpis { display: flex; gap: 12px; padding: 20px 28px; flex-wrap: wrap; }
+  .kpi { background: white; border-radius: 10px; padding: 16px 20px; flex: 1; min-width: 140px;
+          box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+  .kpi .val { font-size: 32px; font-weight: 800; }
+  .kpi .lbl { font-size: 12px; color: #666; margin-top: 2px; }
+  .kpi.red .val { color: #FF4B33; }
+  .kpi.green .val { color: #2E7D32; }
+  .kpi.orange .val { color: #FF6F00; }
+  .summary-cards { display: flex; gap: 10px; padding: 0 28px 20px; flex-wrap: wrap; }
+  .card { background: white; border-radius: 8px; padding: 12px 16px; min-width: 120px;
+           box-shadow: 0 1px 4px rgba(0,0,0,.06); text-align: center; }
+  .card-flag { font-size: 24px; }
+  .card-pais { font-size: 12px; color: #666; margin: 2px 0; }
+  .card-total { font-size: 22px; font-weight: 800; }
+  .card-sub { margin-top: 4px; }
+  .tag-new { background: #E8F5E9; color: #2E7D32; padding: 1px 5px; border-radius: 3px; font-size: 11px; margin: 1px; display: inline-block; }
+  .tag-early { background: #FFF3E0; color: #FF6F00; padding: 1px 5px; border-radius: 3px; font-size: 11px; margin: 1px; display: inline-block; }
+  .tabs { padding: 0 28px; display: flex; gap: 6px; margin-bottom: 16px; }
+  .tab { padding: 8px 18px; border-radius: 6px 6px 0 0; border: none; cursor: pointer;
+          font-size: 13px; font-weight: 600; color: #666; background: #e0e0e0; }
+  .tab.active { background: white; color: #FF4B33; }
+  .panel { display: none; padding: 0 28px 28px; }
+  .panel.active { display: block; }
+  .table-wrap { background: white; border-radius: 10px; overflow: auto;
+                 box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+  table { width: 100%; border-collapse: collapse; }
+  th { background: #1B1B1B; color: white; padding: 10px 12px; text-align: left;
+        font-size: 12px; white-space: nowrap; position: sticky; top: 0; }
+  td { padding: 9px 12px; border-bottom: 1px solid #F0F0F0; vertical-align: middle; }
+  tr:hover td { background: #FAFAFA !important; }
+  .search-bar { padding: 0 28px 12px; }
+  .search-bar input { width: 100%; max-width: 400px; padding: 9px 14px;
+                       border: 1.5px solid #ddd; border-radius: 8px; font-size: 13px; }
+  .empty { text-align: center; padding: 40px; color: #aaa; }
+  .updated { font-size: 11px; color: #aaa; padding: 8px 28px 4px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>tot<em>eat</em> — Reporte Churn</h1>
+  <div class="meta">Generado: 31/03/2026 · 148 locales</div>
+</div>
+
+<div class="kpis">
+  <div class="kpi red"><div class="val">148</div><div class="lbl">Total en churn</div></div>
+  <div class="kpi green"><div class="val">61</div><div class="lbl">Nuevos hoy</div></div>
+  <div class="kpi orange"><div class="val">25</div><div class="lbl">Early churn (&lt;90d)</div></div>
+  <div class="kpi"><div class="val">18</div><div class="lbl">Sin KAM asignado</div></div>
+  <div class="kpi"><div class="val">101</div><div class="lbl">Legacy</div></div>
+  <div class="kpi"><div class="val">47</div><div class="lbl">New Platform</div></div>
+</div>
+
+<div class="summary-cards">
+    <div class="card">
+      <div class="card-flag">🇨🇱</div>
+      <div class="card-pais">Chile</div>
+      <div class="card-total">72</div>
+      <div class="card-sub">
+        <span class="tag-new">+39 nuevos</span>
+        <span class="tag-early">⚡20 early</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-flag">🇨🇴</div>
+      <div class="card-pais">Colombia</div>
+      <div class="card-total">54</div>
+      <div class="card-sub">
+        <span class="tag-new">+16 nuevos</span>
+        <span class="tag-early">⚡4 early</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-flag">🇲🇽</div>
+      <div class="card-pais">México</div>
+      <div class="card-total">12</div>
+      <div class="card-sub">
+        <span class="tag-new">+2 nuevos</span>
+        
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-flag">🇦🇷</div>
+      <div class="card-pais">Argentina</div>
+      <div class="card-total">8</div>
+      <div class="card-sub">
+        <span class="tag-new">+3 nuevos</span>
+        <span class="tag-early">⚡1 early</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-flag">🌎</div>
+      <div class="card-pais">España</div>
+      <div class="card-total">1</div>
+      <div class="card-sub">
+        
+        
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-flag">🇲🇽</div>
+      <div class="card-pais">Mexico</div>
+      <div class="card-total">1</div>
+      <div class="card-sub">
+        <span class="tag-new">+1 nuevos</span>
+        
+      </div>
+    </div></div>
+
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('nuevos',this)">🆕 Nuevos (61)</button>
+  <button class="tab" onclick="switchTab('early',this)">⚡ Early Churn (25)</button>
+  <button class="tab" onclick="switchTab('total',this)">📋 Total (148)</button>
+</div>
+
+<div class="search-bar">
+  <input type="text" id="search" placeholder="Buscar por nombre, ID, KAM, país..." oninput="filterTable()">
+</div>
+
+<div id="tab-nuevos" class="panel active">
+  <div class="table-wrap">
+    <table id="tbl-nuevos">
+      <tr>
+  <th>País</th><th>ID Toteat</th><th>Local</th><th>KAM</th>
+  <th>Plan</th><th>MRR USD</th><th>Estado SF</th><th>Billing</th>
+  <th>Días sin apertura</th><th>Fecha Alta</th><th>Días desde alta</th>
+</tr>
+      
+      <tr style="background:#E8F5E9">
+          <td>🇦🇷 Argentina</td>
+          <td style="font-family:monospace;font-size:12px">5548578722676736-00008</td>
+          <td><strong>GARDARAR (8)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇦🇷 Argentina</td>
+          <td style="font-family:monospace;font-size:12px">5588741840961536-00003</td>
+          <td><strong>Mona Bar (3)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Camila Agüero</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Hibernación</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td>2025-05-16</td>
+          <td style="text-align:center">319</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇦🇷 Argentina</td>
+          <td style="font-family:monospace;font-size:12px">1650518807371868-00001</td>
+          <td><strong>Infinita Pasi�n gluten free (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Camila Agüero</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5891833030508544-00002</td>
+          <td><strong>Panimas Plaza (2)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Neyla Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FOODSTORE</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2022-09-30</td>
+          <td style="text-align:center">1278</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5680325154308096-00001</td>
+          <td><strong>45 Vino y Cocina (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernanda Herreros</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Hibernación</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4877187191406592-00001</td>
+          <td><strong>Aitué Restobar (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Maria Martinez</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5475615441027072-00001</td>
+          <td><strong>DISTRITO BUIN (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernanda Herreros</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5279143424688128-00001</td>
+          <td><strong>Havana Salsa (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Katherine Boscan</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5781581372063744-00001</td>
+          <td><strong>Iguana Bar Restaurant (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernanda Rossel</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">PRO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td>2022-03-31</td>
+          <td style="text-align:center">1461</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6353502865719296-00001</td>
+          <td><strong>TRESSETENTA (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernanda Herreros</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00031</td>
+          <td><strong>ACHOCLONADOS - DUOC - QUILLOTA (31)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00008</td>
+          <td><strong>ACHOCLONADOS - DUOC - SAN JOAQUIN (8)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00015</td>
+          <td><strong>ACHOCLONADOS - UBO - CASA CENTRAL (15)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00016</td>
+          <td><strong>ACHOCLONADOS - UBO - RONDIZZONI (16)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00019</td>
+          <td><strong>ACHOCLONADOS - UDLA - MELIPILLA (19)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00006</td>
+          <td><strong>ACHOCLONADOS - UDLA - REPUBLICA (6)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00044</td>
+          <td><strong>CAFET�N - DUOC - VALPARAISO (44)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00046</td>
+          <td><strong>CAFET�N - INACAP - VALPARAISO (46)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00049</td>
+          <td><strong>CAFET�N - SANTO TOM�S - CONCEPCION (49)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00051</td>
+          <td><strong>CAFET�N - UDLA - PROVIDENCIA (51)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00048</td>
+          <td><strong>CAFET�N RESERVA ESPECIAL - PUC - SAN JOAQUIN ECONOMIA Y ADMINISTRACION (48)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00052</td>
+          <td><strong>CASINO COMO SIEMPRE - UNIACC - CASA CENTRAL (52)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1446023949380383-00015</td>
+          <td><strong>Sodexo Corporate - Bice Vida (15)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">ENTERPRISE</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2025-03-04</td>
+          <td style="text-align:center">392</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1446023949380383-00007</td>
+          <td><strong>Sodexo Corporate - Masisa Cabrero (7)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernando Urrutia</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">ENTERPRISE</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2025-01-30</td>
+          <td style="text-align:center">425</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00028</td>
+          <td><strong>ACHOCLONADOS - DUOC - MELIPILLA (28)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00026</td>
+          <td><strong>ACHOCLONADOS - DUOC - PADRE ALONSO DE OVALLE (26)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00038</td>
+          <td><strong>ACHOCLONADOS - INACAP - RENCA (38)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00003</td>
+          <td><strong>ACHOCLONADOS - MALL - EU 15 NORTE (3)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00013</td>
+          <td><strong>ACHOCLONADOS - PUC - SAN JOAQUIN INGENIERIA CIVIL (13)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00018</td>
+          <td><strong>ACHOCLONADOS - UDLA - LA FLORIDA (18)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1763588840084058-00004</td>
+          <td><strong>ANTIGUO Sodexo Salud - C Santa Mar�a Torre B piso 3 (4)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">ENTERPRISE</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2025-03-11</td>
+          <td style="text-align:center">385</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00043</td>
+          <td><strong>CAFET�N - DUOC - PUENTE ALTO (43)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6335696915398656-00003</td>
+          <td><strong>Doc Popcorn Mall Plaza Sur (3)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernanda Rossel</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00054</td>
+          <td><strong>JUAN FRIJOL - PUC - SAN JOAQUIN COLLEGE (54)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5732074762141696-00001</td>
+          <td><strong>KAMANGA (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Jose Antonio Silva</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2024-12-28</td>
+          <td style="text-align:center">458</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6257435044610048-00001</td>
+          <td><strong>Living Club Ovalle (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Jose Antonio Silva</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2024-03-31</td>
+          <td style="text-align:center">730</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1374694907784438-00001</td>
+          <td><strong>L� vegetariano (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Neyla Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2025-11-01</td>
+          <td style="text-align:center">150</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5528444315238400-00001</td>
+          <td><strong>OVO DISCOTEQUE (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernanda Herreros</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2023-12-31</td>
+          <td style="text-align:center">821</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1324142342428247-00001</td>
+          <td><strong>Pizzer�a 7 Hermano (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Jose Antonio Silva</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2025-10-01</td>
+          <td style="text-align:center">181</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5094893539164160-00001</td>
+          <td><strong>Room Dance (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernanda Rossel</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2024-01-31</td>
+          <td style="text-align:center">790</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00056</td>
+          <td><strong>TITO'S BURGER - DUOC - PLAZA VESPUCIO (56)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4691871492997120-00002</td>
+          <td><strong>Tio Tomate Cachagua (2)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Rafael Garcia</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">4904485188796416-00016</td>
+          <td><strong>Animal Cocina Eventos (16)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6374923687428096-00004</td>
+          <td><strong>ONE PIZZERIA RAPPITURBO (4)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Jenthely Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2024-08-04</td>
+          <td style="text-align:center">604</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6389745782489088-00001</td>
+          <td><strong>Pikoniggio Restaurante (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td>2024-01-31</td>
+          <td style="text-align:center">790</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5241168871161856-00032</td>
+          <td><strong>Pizza town unico yumbo (32)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1982994904223618-00004</td>
+          <td><strong>Alparke - El Sabio (4)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2025-10-12</td>
+          <td style="text-align:center">170</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1982994904223618-00005</td>
+          <td><strong>Alparke - Locales (5)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2025-10-05</td>
+          <td style="text-align:center">177</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1964052946589015-00001</td>
+          <td><strong>El Paso Hamburguesa (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2025-12-25</td>
+          <td style="text-align:center">96</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1806463996132680-00002</td>
+          <td><strong>La Frontera Taraza (2)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1174498587383690-00001</td>
+          <td><strong>L�nea 7 (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1579937206387928-00015</td>
+          <td><strong>Pigasus Evento (15)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2025-09-26</td>
+          <td style="text-align:center">186</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1130762731389942-00001</td>
+          <td><strong>San'Lu Restaurante (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Jenthely Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-27</td>
+          <td style="text-align:center">32</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1303151328633231-00001</td>
+          <td><strong>Vitatosa (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2025-11-30</td>
+          <td style="text-align:center">121</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1374147714262439-00037</td>
+          <td><strong>ARROZ PAISA SEDE RIONEGRO 2 (37)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1224501359348539-00001</td>
+          <td><strong>CafePro (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1363110885289448-00001</td>
+          <td><strong>Hamburguesas la Sant�sima (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Jenthely Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-03-12</td>
+          <td style="text-align:center">19</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1637591361874491-00001</td>
+          <td><strong>Restaurante Chow Fan (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2025-05-31</td>
+          <td style="text-align:center">304</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇲🇽 Mexico</td>
+          <td style="font-family:monospace;font-size:12px">1432893837564458-00008</td>
+          <td><strong>Las Marquesitas Originales - Estadio Chivas (8)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇲🇽 México</td>
+          <td style="font-family:monospace;font-size:12px">4565979236532224-00001</td>
+          <td><strong>El Misterio (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Alejandro Nolasco</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td>2024-01-31</td>
+          <td style="text-align:center">790</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇲🇽 México</td>
+          <td style="font-family:monospace;font-size:12px">1386018175923524-00001</td>
+          <td><strong>Luxury Discoteca (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Alejandro Nolasco</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2025-08-29</td>
+          <td style="text-align:center">214</td>
+        </tr>
+    </table>
+  </div>
+</div>
+
+<div id="tab-early" class="panel">
+  <div class="table-wrap">
+    <table id="tbl-early">
+      <tr>
+  <th>País</th><th>ID Toteat</th><th>Local</th><th>KAM</th>
+  <th>Plan</th><th>MRR USD</th><th>Estado SF</th><th>Billing</th>
+  <th>Días sin apertura</th><th>Fecha Alta</th><th>Días desde alta</th>
+</tr>
+      
+      <tr style="background:#FFF9C4">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6025113086590976-00006</td>
+          <td><strong>Famiglia 3.5 (6)</strong><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2026-02-02</td>
+          <td style="text-align:center">57</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4935976374501376-00002</td>
+          <td><strong>Fuegos de Cachagua (2)</strong><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Katherine Boscan</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2026-01-03</td>
+          <td style="text-align:center">87</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00031</td>
+          <td><strong>ACHOCLONADOS - DUOC - QUILLOTA (31)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00008</td>
+          <td><strong>ACHOCLONADOS - DUOC - SAN JOAQUIN (8)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00015</td>
+          <td><strong>ACHOCLONADOS - UBO - CASA CENTRAL (15)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00016</td>
+          <td><strong>ACHOCLONADOS - UBO - RONDIZZONI (16)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00019</td>
+          <td><strong>ACHOCLONADOS - UDLA - MELIPILLA (19)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00006</td>
+          <td><strong>ACHOCLONADOS - UDLA - REPUBLICA (6)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00044</td>
+          <td><strong>CAFET�N - DUOC - VALPARAISO (44)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00046</td>
+          <td><strong>CAFET�N - INACAP - VALPARAISO (46)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00049</td>
+          <td><strong>CAFET�N - SANTO TOM�S - CONCEPCION (49)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00051</td>
+          <td><strong>CAFET�N - UDLA - PROVIDENCIA (51)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00052</td>
+          <td><strong>CASINO COMO SIEMPRE - UNIACC - CASA CENTRAL (52)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00028</td>
+          <td><strong>ACHOCLONADOS - DUOC - MELIPILLA (28)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00026</td>
+          <td><strong>ACHOCLONADOS - DUOC - PADRE ALONSO DE OVALLE (26)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00038</td>
+          <td><strong>ACHOCLONADOS - INACAP - RENCA (38)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00013</td>
+          <td><strong>ACHOCLONADOS - PUC - SAN JOAQUIN INGENIERIA CIVIL (13)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00018</td>
+          <td><strong>ACHOCLONADOS - UDLA - LA FLORIDA (18)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00043</td>
+          <td><strong>CAFET�N - DUOC - PUENTE ALTO (43)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00054</td>
+          <td><strong>JUAN FRIJOL - PUC - SAN JOAQUIN COLLEGE (54)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00056</td>
+          <td><strong>TITO'S BURGER - DUOC - PLAZA VESPUCIO (56)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1130762731389942-00001</td>
+          <td><strong>San'Lu Restaurante (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Jenthely Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-27</td>
+          <td style="text-align:center">32</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1374147714262439-00037</td>
+          <td><strong>ARROZ PAISA SEDE RIONEGRO 2 (37)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1363110885289448-00001</td>
+          <td><strong>Hamburguesas la Sant�sima (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Jenthely Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-03-12</td>
+          <td style="text-align:center">19</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇦🇷 Argentina</td>
+          <td style="font-family:monospace;font-size:12px">1650518807371868-00001</td>
+          <td><strong>Infinita Pasi�n gluten free (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Camila Agüero</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+    </table>
+  </div>
+</div>
+
+<div id="tab-total" class="panel">
+  <div class="table-wrap">
+    <table id="tbl-total">
+      <tr>
+  <th>País</th><th>ID Toteat</th><th>Local</th><th>KAM</th>
+  <th>Plan</th><th>MRR USD</th><th>Estado SF</th><th>Billing</th>
+  <th>Días sin apertura</th><th>Fecha Alta</th><th>Días desde alta</th>
+</tr>
+      <tr>
+          <td>🇲🇽 México</td>
+          <td style="font-family:monospace;font-size:12px">6728548362616832-00001</td>
+          <td><strong>BREAK & BRUNCH CEDIS (1)</strong></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇲🇽 México</td>
+          <td style="font-family:monospace;font-size:12px">4799307822268416-00001</td>
+          <td><strong>Barra Teatro  Metropolitano (1)</strong></td>
+          <td>Alejandro Nolasco</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇲🇽 México</td>
+          <td style="font-family:monospace;font-size:12px">5681206091579392-00001</td>
+          <td><strong>Cafetería omeyocan (1)</strong></td>
+          <td>Javiera C.Ramos</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2023-03-31</td>
+          <td style="text-align:center">1096</td>
+        </tr>
+<tr>
+          <td>🇲🇽 México</td>
+          <td style="font-family:monospace;font-size:12px">4612758028550144-00001</td>
+          <td><strong>HIdroponia (1)</strong></td>
+          <td>Alejandro Nolasco</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2024-11-21</td>
+          <td style="text-align:center">495</td>
+        </tr>
+<tr>
+          <td>🇲🇽 México</td>
+          <td style="font-family:monospace;font-size:12px">5972098527133696-00001</td>
+          <td><strong>La Esperanza Tortería y Cafetería (1)</strong></td>
+          <td>Javiera C.Ramos</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-03-19</td>
+          <td style="text-align:center">377</td>
+        </tr>
+<tr>
+          <td>🇲🇽 México</td>
+          <td style="font-family:monospace;font-size:12px">5521202409635840-00001</td>
+          <td><strong>Restaurante Rosa Mexicano (1)</strong></td>
+          <td>Javiera C.Ramos</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">PRO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2022-06-30</td>
+          <td style="text-align:center">1370</td>
+        </tr>
+<tr>
+          <td>🇲🇽 México</td>
+          <td style="font-family:monospace;font-size:12px">5968717093666816-00026</td>
+          <td><strong>Ta-Chi Dogo Price Shoes Ecatepec (26)</strong></td>
+          <td>Javiera C.Ramos</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-12-12</td>
+          <td style="text-align:center">109</td>
+        </tr>
+<tr>
+          <td>🇲🇽 México</td>
+          <td style="font-family:monospace;font-size:12px">6361874152816640-00002</td>
+          <td><strong>Tacos Don Pedro II (2)</strong></td>
+          <td>Juan Carlos Munoz</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇲🇽 México</td>
+          <td style="font-family:monospace;font-size:12px">5499332296310784-00001</td>
+          <td><strong>TequeGuayi Cedis (1)</strong></td>
+          <td>Alejandro Nolasco</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-03-04</td>
+          <td style="text-align:center">392</td>
+        </tr>
+<tr>
+          <td>🇲🇽 México</td>
+          <td style="font-family:monospace;font-size:12px">5271493523800064-00002</td>
+          <td><strong>Oyster House San Jose (2)</strong></td>
+          <td>Giovanni Soriano</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td>2023-10-31</td>
+          <td style="text-align:center">882</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇲🇽 México</td>
+          <td style="font-family:monospace;font-size:12px">4565979236532224-00001</td>
+          <td><strong>El Misterio (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Alejandro Nolasco</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td>2024-01-31</td>
+          <td style="text-align:center">790</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5436128039141376-00001</td>
+          <td><strong>ALMACEN PRINCIPAL (1)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-03-31</td>
+          <td style="text-align:center">365</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6444944573857792-00004</td>
+          <td><strong>AZAHAR INSTITUCIONAL (4)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CENTROPRODUCCION</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2023-12-31</td>
+          <td style="text-align:center">821</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6190843668594688-00002</td>
+          <td><strong>Adriano eventos (2)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-09-07</td>
+          <td style="text-align:center">205</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">4904485188796416-00016</td>
+          <td><strong>Animal Cocina Eventos (16)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5612859218984960-00013</td>
+          <td><strong>Atrium Food And Drinks Eventos (13)</strong></td>
+          <td>Jenthely Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6444944573857792-00007</td>
+          <td><strong>Azahar Página (7)</strong></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5759376467558400-00006</td>
+          <td><strong>BAJO CERO NUESTRO BOGOTA (6)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-03-31</td>
+          <td style="text-align:center">365</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6501272741740544-00005</td>
+          <td><strong>Bar Cinco Licorera Coliseo Live (5)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5753323558928384-00003</td>
+          <td><strong>Baronesa Aeropuerto (3)</strong></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2023-05-31</td>
+          <td style="text-align:center">1035</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5466875378139136-00001</td>
+          <td><strong>COCINA COLISEO MEDPLUS (1)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5003283523043328-00001</td>
+          <td><strong>Casino Agency Global Company SAS (1)</strong></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2024-07-09</td>
+          <td style="text-align:center">630</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">4975815585693696-00002</td>
+          <td><strong>Con Kafé (2)</strong></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-10-30</td>
+          <td style="text-align:center">152</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6518612538032128-00002</td>
+          <td><strong>Empanadas Típicas Portoalegre (Franquicia) (2)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6025113086590976-00006</td>
+          <td><strong>Famiglia 3.5 (6)</strong><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2026-02-02</td>
+          <td style="text-align:center">57</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6025113086590976-00005</td>
+          <td><strong>Famiglia Pizzeria Eventos (5)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-03-24</td>
+          <td style="text-align:center">372</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">4902138748207104-00003</td>
+          <td><strong>Ferias y Eventos (3)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-02-21</td>
+          <td style="text-align:center">403</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">4789449845768192-00004</td>
+          <td><strong>Ilatina Speakeasy (4)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">4789449845768192-00003</td>
+          <td><strong>Ilatina eventos (3)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2024-11-26</td>
+          <td style="text-align:center">490</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">4884105810149376-00001</td>
+          <td><strong>Le pork (1)</strong></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5382693911134208-00001</td>
+          <td><strong>Lechoneria San Pernil (1)</strong></td>
+          <td>Jenthely Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2023-05-31</td>
+          <td style="text-align:center">1035</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5030016729219072-00001</td>
+          <td><strong>Maclau Pan y Café - Paseo del Ángel (1)</strong></td>
+          <td>Yurani Torres</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2022-06-30</td>
+          <td style="text-align:center">1370</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5729529189105664-00001</td>
+          <td><strong>No Mames Güey (1)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">PRO</span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5259111129939968-00002</td>
+          <td><strong>OMR - ZONA T (2)</strong></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-03-13</td>
+          <td style="text-align:center">383</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6374923687428096-00004</td>
+          <td><strong>ONE PIZZERIA RAPPITURBO (4)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Jenthely Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2024-08-04</td>
+          <td style="text-align:center">604</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6754718777475072-00004</td>
+          <td><strong>Oakberry Açaí Eventos (4)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6378304703299584-00001</td>
+          <td><strong>Pepasta (1)</strong></td>
+          <td>Jenthely Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2022-03-31</td>
+          <td style="text-align:center">1461</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5916733649715200-00001</td>
+          <td><strong>RESTO BAR 80 (1)</strong></td>
+          <td>Naty Cardona</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6165729059274752-00001</td>
+          <td><strong>Raj Burger (1)</strong></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2022-06-30</td>
+          <td style="text-align:center">1370</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5772387476176896-00001</td>
+          <td><strong>Restaurante Estadero Santander (1)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-07-30</td>
+          <td style="text-align:center">244</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">4902138748207104-00001</td>
+          <td><strong>Sayfit (1)</strong></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6234297399508992-00001</td>
+          <td><strong>Smoking Burgers Cedritos (1)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2022-02-28</td>
+          <td style="text-align:center">1492</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6234297399508992-00006</td>
+          <td><strong>Smoking Burgers Cinemateca (6)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2022-03-31</td>
+          <td style="text-align:center">1461</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6234297399508992-00004</td>
+          <td><strong>Smoking Burgers Parkway (4)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2022-02-28</td>
+          <td style="text-align:center">1492</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">4797561526943744-00002</td>
+          <td><strong>Taiwán Wang Express (2)</strong></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2024-07-31</td>
+          <td style="text-align:center">608</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">4850915661840384-00002</td>
+          <td><strong>Tejo la embajada EVENTOS- (2)</strong></td>
+          <td>Jenthely Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-08-26</td>
+          <td style="text-align:center">217</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5140790280060928-00001</td>
+          <td><strong>Tremé eventos (1)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-09-04</td>
+          <td style="text-align:center">208</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5613085985079296-00001</td>
+          <td><strong>Vergalandia (1)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2022-11-30</td>
+          <td style="text-align:center">1217</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">4797561526943744-00001</td>
+          <td><strong>Wang Express (1)</strong></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2024-07-31</td>
+          <td style="text-align:center">608</td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6358884479008768-00001</td>
+          <td><strong>Bicono Eventos (1)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6217062533562368-00001</td>
+          <td><strong>Don Tulio Parrilla (1)</strong></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td>2022-12-31</td>
+          <td style="text-align:center">1186</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">6389745782489088-00001</td>
+          <td><strong>Pikoniggio Restaurante (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td>2024-01-31</td>
+          <td style="text-align:center">790</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">5241168871161856-00032</td>
+          <td><strong>Pizza town unico yumbo (32)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇦🇷 Argentina</td>
+          <td style="font-family:monospace;font-size:12px">4686642102272000-00001</td>
+          <td><strong>ARRFARAR (1)</strong></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇦🇷 Argentina</td>
+          <td style="font-family:monospace;font-size:12px">4637335996203008-00002</td>
+          <td><strong>EL SULTAN ALTERPOINT (2)</strong></td>
+          <td>Camila Agüero</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-05-31</td>
+          <td style="text-align:center">304</td>
+        </tr>
+<tr>
+          <td>🇦🇷 Argentina</td>
+          <td style="font-family:monospace;font-size:12px">4599641917751296-00001</td>
+          <td><strong>PTOPARAR (1)</strong></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇦🇷 Argentina</td>
+          <td style="font-family:monospace;font-size:12px">5588741840961536-00002</td>
+          <td><strong>Tampa (2)</strong></td>
+          <td>Camila Agüero</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2023-05-31</td>
+          <td style="text-align:center">1035</td>
+        </tr>
+<tr>
+          <td>🇦🇷 Argentina</td>
+          <td style="font-family:monospace;font-size:12px">5862845152100352-00003</td>
+          <td><strong>Feriado Maschwitz (3)</strong></td>
+          <td>Camila Agüero</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td>2025-11-18</td>
+          <td style="text-align:center">133</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇦🇷 Argentina</td>
+          <td style="font-family:monospace;font-size:12px">5548578722676736-00008</td>
+          <td><strong>GARDARAR (8)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇦🇷 Argentina</td>
+          <td style="font-family:monospace;font-size:12px">5588741840961536-00003</td>
+          <td><strong>Mona Bar (3)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Camila Agüero</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Hibernación</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td>2025-05-16</td>
+          <td style="text-align:center">319</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4852611544252416-00001</td>
+          <td><strong>27 F Chilean Way (1)</strong></td>
+          <td>Fernanda Rossel</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2024-10-30</td>
+          <td style="text-align:center">517</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6637795148824576-00001</td>
+          <td><strong>Aromas, Pan y Café (1)</strong></td>
+          <td>Rafael Garcia</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5042448384786432-00001</td>
+          <td><strong>Bar_La_Virgen (1)</strong></td>
+          <td>Katherine Boscan</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CENTROPRODUCCION</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-03-25</td>
+          <td style="text-align:center">371</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6735731714949120-00002</td>
+          <td><strong>COCINA CENTRAL T1 (2)</strong></td>
+          <td>Katherine Boscan</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CENTROPRODUCCION</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-05-22</td>
+          <td style="text-align:center">313</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6233446175735808-00007</td>
+          <td><strong>CP Heladería The Crepe Café (7)</strong></td>
+          <td>Fernanda Rossel</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CENTROPRODUCCION</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2024-07-26</td>
+          <td style="text-align:center">613</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6603374725955584-00002</td>
+          <td><strong>Chilenazo Santiago (2)</strong></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6716198417334272-00002</td>
+          <td><strong>Chocolatería de la P (2)</strong></td>
+          <td>Jose Antonio Silva</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2022-01-31</td>
+          <td style="text-align:center">1520</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5379350367830016-00023</td>
+          <td><strong>Cream Roll Plaza Norte - NUEVO (23)</strong></td>
+          <td>Fernanda Rossel</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-08-02</td>
+          <td style="text-align:center">241</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5630597091426304-00001</td>
+          <td><strong>Don Teo Machali (1)</strong></td>
+          <td>Fernanda Rossel</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2023-07-31</td>
+          <td style="text-align:center">974</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6352848321380352-00001</td>
+          <td><strong>Don Teo Rancagua (1)</strong></td>
+          <td>Fernanda Rossel</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2023-07-31</td>
+          <td style="text-align:center">974</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4721412987289600-00001</td>
+          <td><strong>Eliglu Vitacura (1)</strong></td>
+          <td>Fernanda Herreros</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FOODSTORE</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2024-03-31</td>
+          <td style="text-align:center">730</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5553775127035904-00001</td>
+          <td><strong>Forá (1)</strong></td>
+          <td>Jose Antonio Silva</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Hibernación</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2022-04-30</td>
+          <td style="text-align:center">1431</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4935976374501376-00002</td>
+          <td><strong>Fuegos de Cachagua (2)</strong><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Katherine Boscan</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2026-01-03</td>
+          <td style="text-align:center">87</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5818371589406720-00001</td>
+          <td><strong>Kbross burger (1)</strong></td>
+          <td>Rafael Garcia</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2023-08-31</td>
+          <td style="text-align:center">943</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5996577976745984-00002</td>
+          <td><strong>Kiosko La Estación (2)</strong></td>
+          <td>Fernanda Herreros</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Hibernación</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2025-01-03</td>
+          <td style="text-align:center">452</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6319020076433408-00001</td>
+          <td><strong>La Ladera Pizzeria (1)</strong></td>
+          <td>Jose Antonio Silva</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2023-03-31</td>
+          <td style="text-align:center">1096</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4915242917953536-00002</td>
+          <td><strong>La Piojera - Eventos (2)</strong></td>
+          <td>Jose Antonio Silva</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2024-09-20</td>
+          <td style="text-align:center">557</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4988920793661440-00006</td>
+          <td><strong>MIT Burger MUT (6)</strong></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4988920793661440-00001</td>
+          <td><strong>Mit Burger Alonso (1)</strong></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4988920793661440-00004</td>
+          <td><strong>Mit Burger Mall Sport. (4)</strong></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5891833030508544-00002</td>
+          <td><strong>Panimas Plaza (2)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Neyla Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FOODSTORE</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2022-09-30</td>
+          <td style="text-align:center">1278</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6248862037966848-00001</td>
+          <td><strong>Pastelería (1)</strong></td>
+          <td>Katherine Boscan</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CENTROPRODUCCION</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6419229021700096-00001</td>
+          <td><strong>Pergamino & Andiamo Pizzería (1)</strong></td>
+          <td>Neyla Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2023-12-31</td>
+          <td style="text-align:center">821</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5280550674497536-00001</td>
+          <td><strong>Todo Empanadas 2 (1)</strong></td>
+          <td>Rafael Garcia</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5518956400738304-00001</td>
+          <td><strong>UNCLEF_T2_DEP (1)</strong></td>
+          <td>Katherine Boscan</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td>2022-02-28</td>
+          <td style="text-align:center">1492</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4986839115759616-00003</td>
+          <td><strong>Uncle Fletch La Dehesa (3)</strong></td>
+          <td>Jose Antonio Silva</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Hibernación</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4813784791515136-00001</td>
+          <td><strong>BIERGARTEN IGEL (1)</strong></td>
+          <td>Fernanda Herreros</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td>2025-01-23</td>
+          <td style="text-align:center">432</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4899748509908992-00014</td>
+          <td><strong>Casa Matrix 515 C.P. (14)</strong></td>
+          <td>Rafael Garcia</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CENTROPRODUCCION</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td>2024-07-01</td>
+          <td style="text-align:center">638</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4657316276600832-00001</td>
+          <td><strong>Kento Comercializadora  (KSC SpA) (1)</strong></td>
+          <td>Fernanda Herreros</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CENTROPRODUCCION</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td>2025-02-03</td>
+          <td style="text-align:center">421</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4988920793661440-00003</td>
+          <td><strong>Mit Burger Casacostanera (3)</strong></td>
+          <td>Fernanda Rossel</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td>2022-07-31</td>
+          <td style="text-align:center">1339</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5734987110416384-00006</td>
+          <td><strong>Philia Reñaca (6)</strong></td>
+          <td>Fernanda Herreros</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td>2025-01-20</td>
+          <td style="text-align:center">435</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5094893539164160-00002</td>
+          <td><strong>Room Dance Los Ángeles (2)</strong></td>
+          <td>Fernanda Rossel</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">1</td>
+          <td>2025-10-31</td>
+          <td style="text-align:center">151</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5680325154308096-00001</td>
+          <td><strong>45 Vino y Cocina (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernanda Herreros</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Hibernación</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4877187191406592-00001</td>
+          <td><strong>Aitué Restobar (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Maria Martinez</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5475615441027072-00001</td>
+          <td><strong>DISTRITO BUIN (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernanda Herreros</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5279143424688128-00001</td>
+          <td><strong>Havana Salsa (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Katherine Boscan</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5781581372063744-00001</td>
+          <td><strong>Iguana Bar Restaurant (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernanda Rossel</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">PRO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td>2022-03-31</td>
+          <td style="text-align:center">1461</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5176308007043072-00004</td>
+          <td><strong>MonteLion (4)</strong></td>
+          <td>Jose Antonio Silva</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td>2025-04-25</td>
+          <td style="text-align:center">340</td>
+        </tr>
+<tr>
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6712026101055488-00017</td>
+          <td><strong>SushiBlues República (17)</strong></td>
+          <td>Katherine Boscan</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td>2025-03-25</td>
+          <td style="text-align:center">371</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6353502865719296-00001</td>
+          <td><strong>TRESSETENTA (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernanda Herreros</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>40</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr>
+          <td>🌎 España</td>
+          <td style="font-family:monospace;font-size:12px">6249242432110592-00001</td>
+          <td><strong>LA FOURMI GRACIA (1)</strong></td>
+          <td>Maria Martinez</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td style="text-align:center">0</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00031</td>
+          <td><strong>ACHOCLONADOS - DUOC - QUILLOTA (31)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00008</td>
+          <td><strong>ACHOCLONADOS - DUOC - SAN JOAQUIN (8)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00015</td>
+          <td><strong>ACHOCLONADOS - UBO - CASA CENTRAL (15)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00016</td>
+          <td><strong>ACHOCLONADOS - UBO - RONDIZZONI (16)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00019</td>
+          <td><strong>ACHOCLONADOS - UDLA - MELIPILLA (19)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00006</td>
+          <td><strong>ACHOCLONADOS - UDLA - REPUBLICA (6)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00044</td>
+          <td><strong>CAFET�N - DUOC - VALPARAISO (44)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00046</td>
+          <td><strong>CAFET�N - INACAP - VALPARAISO (46)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00049</td>
+          <td><strong>CAFET�N - SANTO TOM�S - CONCEPCION (49)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00051</td>
+          <td><strong>CAFET�N - UDLA - PROVIDENCIA (51)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00048</td>
+          <td><strong>CAFET�N RESERVA ESPECIAL - PUC - SAN JOAQUIN ECONOMIA Y ADMINISTRACION (48)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00052</td>
+          <td><strong>CASINO COMO SIEMPRE - UNIACC - CASA CENTRAL (52)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1446023949380383-00015</td>
+          <td><strong>Sodexo Corporate - Bice Vida (15)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">ENTERPRISE</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2025-03-04</td>
+          <td style="text-align:center">392</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1446023949380383-00007</td>
+          <td><strong>Sodexo Corporate - Masisa Cabrero (7)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernando Urrutia</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">ENTERPRISE</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2025-01-30</td>
+          <td style="text-align:center">425</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00028</td>
+          <td><strong>ACHOCLONADOS - DUOC - MELIPILLA (28)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00026</td>
+          <td><strong>ACHOCLONADOS - DUOC - PADRE ALONSO DE OVALLE (26)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00038</td>
+          <td><strong>ACHOCLONADOS - INACAP - RENCA (38)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00003</td>
+          <td><strong>ACHOCLONADOS - MALL - EU 15 NORTE (3)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00013</td>
+          <td><strong>ACHOCLONADOS - PUC - SAN JOAQUIN INGENIERIA CIVIL (13)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00018</td>
+          <td><strong>ACHOCLONADOS - UDLA - LA FLORIDA (18)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1763588840084058-00004</td>
+          <td><strong>ANTIGUO Sodexo Salud - C Santa Mar�a Torre B piso 3 (4)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">ENTERPRISE</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2025-03-11</td>
+          <td style="text-align:center">385</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00043</td>
+          <td><strong>CAFET�N - DUOC - PUENTE ALTO (43)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6335696915398656-00003</td>
+          <td><strong>Doc Popcorn Mall Plaza Sur (3)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernanda Rossel</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00054</td>
+          <td><strong>JUAN FRIJOL - PUC - SAN JOAQUIN COLLEGE (54)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5732074762141696-00001</td>
+          <td><strong>KAMANGA (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Jose Antonio Silva</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2024-12-28</td>
+          <td style="text-align:center">458</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">6257435044610048-00001</td>
+          <td><strong>Living Club Ovalle (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Jose Antonio Silva</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2024-03-31</td>
+          <td style="text-align:center">730</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1374694907784438-00001</td>
+          <td><strong>L� vegetariano (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Neyla Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2025-11-01</td>
+          <td style="text-align:center">150</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5528444315238400-00001</td>
+          <td><strong>OVO DISCOTEQUE (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernanda Herreros</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2023-12-31</td>
+          <td style="text-align:center">821</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1324142342428247-00001</td>
+          <td><strong>Pizzer�a 7 Hermano (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Jose Antonio Silva</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2025-10-01</td>
+          <td style="text-align:center">181</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">5094893539164160-00001</td>
+          <td><strong>Room Dance (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Fernanda Rossel</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2024-01-31</td>
+          <td style="text-align:center">790</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">1995636757527223-00056</td>
+          <td><strong>TITO'S BURGER - DUOC - PLAZA VESPUCIO (56)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇱 Chile</td>
+          <td style="font-family:monospace;font-size:12px">4691871492997120-00002</td>
+          <td><strong>Tio Tomate Cachagua (2)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Rafael Garcia</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1982994904223618-00004</td>
+          <td><strong>Alparke - El Sabio (4)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2025-10-12</td>
+          <td style="text-align:center">170</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1982994904223618-00005</td>
+          <td><strong>Alparke - Locales (5)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2025-10-05</td>
+          <td style="text-align:center">177</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1964052946589015-00001</td>
+          <td><strong>El Paso Hamburguesa (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2025-12-25</td>
+          <td style="text-align:center">96</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1806463996132680-00002</td>
+          <td><strong>La Frontera Taraza (2)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1174498587383690-00001</td>
+          <td><strong>L�nea 7 (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1579937206387928-00015</td>
+          <td><strong>Pigasus Evento (15)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2025-09-26</td>
+          <td style="text-align:center">186</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1130762731389942-00001</td>
+          <td><strong>San'Lu Restaurante (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Jenthely Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-27</td>
+          <td style="text-align:center">32</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1303151328633231-00001</td>
+          <td><strong>Vitatosa (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Ricardo Robayo</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2025-11-30</td>
+          <td style="text-align:center">121</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1374147714262439-00037</td>
+          <td><strong>ARROZ PAISA SEDE RIONEGRO 2 (37)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">CORPORATIVO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1224501359348539-00001</td>
+          <td><strong>CafePro (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1363110885289448-00001</td>
+          <td><strong>Hamburguesas la Sant�sima (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Jenthely Morales</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">BASICO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2026-03-12</td>
+          <td style="text-align:center">19</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇨🇴 Colombia</td>
+          <td style="font-family:monospace;font-size:12px">1637591361874491-00001</td>
+          <td><strong>Restaurante Chow Fan (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td>Baja</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2025-05-31</td>
+          <td style="text-align:center">304</td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇲🇽 Mexico</td>
+          <td style="font-family:monospace;font-size:12px">1432893837564458-00008</td>
+          <td><strong>Las Marquesitas Originales - Estadio Chivas (8)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px"></span></td>
+          <td style="text-align:right"></td>
+          <td></td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td></td>
+          <td style="text-align:center"></td>
+        </tr>
+<tr style="background:#E8F5E9">
+          <td>🇲🇽 México</td>
+          <td style="font-family:monospace;font-size:12px">1386018175923524-00001</td>
+          <td><strong>Luxury Discoteca (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span></td>
+          <td>Alejandro Nolasco</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">AVANZADO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">2</td>
+          <td>2025-08-29</td>
+          <td style="text-align:center">214</td>
+        </tr>
+<tr style="background:#FFF9C4">
+          <td>🇦🇷 Argentina</td>
+          <td style="font-family:monospace;font-size:12px">1650518807371868-00001</td>
+          <td><strong>Infinita Pasi�n gluten free (1)</strong><span style="background:#2E7D32;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">NUEVO</span><span style="background:#FF6F00;color:white;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px">⚡EARLY</span></td>
+          <td>Camila Agüero</td>
+          <td><span style="background:#E3F2FD;padding:2px 6px;border-radius:3px;font-size:12px">FIJO</span></td>
+          <td style="text-align:right"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td style="text-align:center">1</td>
+          <td>2026-02-28</td>
+          <td style="text-align:center">31</td>
+        </tr>
+    </table>
+  </div>
+</div>
+
+<div class="updated">Última actualización: 2026-03-31 14:35 · Próxima: mañana 11:00 AM</div>
+
+<script>
+function switchTab(name, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('search').value = '';
+  filterTable();
+}
+
+function filterTable() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const activePanel = document.querySelector('.panel.active');
+  if (!activePanel) return;
+  const rows = activePanel.querySelectorAll('table tr:not(:first-child)');
+  rows.forEach(row => {
+    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
