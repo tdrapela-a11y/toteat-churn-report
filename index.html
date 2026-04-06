@@ -82,6 +82,11 @@
   .mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 11px; color: #666; }
   .right { text-align: right; }
   .center { text-align: center; }
+  .th-sortable { cursor: pointer; user-select: none; }
+  .th-sortable:hover { background: #2d2d30; }
+  .sort-icon { opacity: .5; font-size: 10px; }
+  .th-sortable.asc .sort-icon::after  { content: ' ↑'; opacity: 1; }
+  .th-sortable.desc .sort-icon::after { content: ' ↓'; opacity: 1; }
 
   /* ── Badges ── */
   .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px;
@@ -205,7 +210,7 @@
     <table>
       <tr>
   <th>País</th><th>ID Toteat</th><th>Local</th><th>KAM</th>
-  <th>Plan</th><th>MRR USD</th><th>Estado SF</th><th>Billing</th>
+  <th>Plan</th><th class="th-sortable" onclick="sortByMRR(this)" title="Ordenar por MRR">MRR USD <span class="sort-icon">↕</span></th><th>Estado SF</th><th>Billing</th>
   <th>Días sin apertura</th><th>Fecha Alta</th><th>Días desde alta</th><th>Versión</th>
 </tr>
       
@@ -215,7 +220,7 @@
           <td><strong>DONDE PANCHO COCINA & BAR (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Neyla Morales</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$82</td>
+          <td class="right" data-mrr="82.0">$82</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -229,7 +234,7 @@
           <td><strong>Del Cielo Cafetería (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$43</td>
+          <td class="right" data-mrr="43.0">$43</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -243,7 +248,7 @@
           <td><strong>Rendibu Portal Centro (10)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Fernanda Rossel</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$85</td>
+          <td class="right" data-mrr="85.0">$85</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -257,7 +262,7 @@
           <td><strong>ACHOCLONADOS - DUOC - PLAZA VESPUCIO (30)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -271,7 +276,7 @@
           <td><strong>ACHOCLONADOS - DUOC - PUENTE ALTO (5)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -285,7 +290,7 @@
           <td><strong>ACHOCLONADOS - DUOC - SAN CARLOS DE APOQUINDO (33)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -299,7 +304,7 @@
           <td><strong>ACHOCLONADOS - MALL - EU 15 NORTE (3)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -313,7 +318,7 @@
           <td><strong>ACHOCLONADOS - SANTO TOM�S - CONCEPCION (14)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -327,7 +332,7 @@
           <td><strong>ACHOCLONADOS - UDLA - PROVIDENCIA (20)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -341,7 +346,7 @@
           <td><strong>ACHOCLONADOS - UDLA - VI�A DEL MAR (21)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -355,7 +360,7 @@
           <td><strong>ACHOCLONADOS - USS - CONCEPCION (24)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -369,7 +374,7 @@
           <td><strong>Bakery (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -383,7 +388,7 @@
           <td><strong>Bohmoz & Co (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Neyla Morales</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$112</td>
+          <td class="right" data-mrr="112.0">$112</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -397,7 +402,7 @@
           <td><strong>Buche (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -411,7 +416,7 @@
           <td><strong>CAFET�N - PUC - SAN JOAQUIN HALL UNIVERSITARIO (47)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -425,7 +430,7 @@
           <td><strong>Cafeton DUOC Antonio Varas (2)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -439,7 +444,7 @@
           <td><strong>Casino Nuria (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -453,7 +458,7 @@
           <td><strong>Claro Vip Hamburguesas - Claro Arena (11)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -467,7 +472,7 @@
           <td><strong>Claro Vip Hotdog - Claro Arena (12)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -481,7 +486,7 @@
           <td><strong>Don Jos� Local 918 (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$198</td>
+          <td class="right" data-mrr="198.0">$198</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -495,7 +500,7 @@
           <td><strong>Fouilloux Hamburguesas - Claro Arena (3)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -509,7 +514,7 @@
           <td><strong>Fouilloux Hotdog - Claro Arena (4)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -523,7 +528,7 @@
           <td><strong>La Trinidad Base (10000)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -537,7 +542,7 @@
           <td><strong>Lepe Hotdog - Claro Arena (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -551,7 +556,7 @@
           <td><strong>Livingston Hamburguesas - Claro Arena (7)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -565,7 +570,7 @@
           <td><strong>Livingston Hotdog - Claro Arena (8)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -579,7 +584,7 @@
           <td><strong>Livingston Snack Norte - Claro Arena (9)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -593,7 +598,7 @@
           <td><strong>Livingston Snack Sur - Claro Arena (10)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -607,7 +612,7 @@
           <td><strong>Lounge B Cafeter�a - Claro Arena (14)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -621,7 +626,7 @@
           <td><strong>Lounge D Cafeter�a - Claro Arena (16)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -635,7 +640,7 @@
           <td><strong>Offside (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$75</td>
+          <td class="right" data-mrr="75.0">$75</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -649,7 +654,7 @@
           <td><strong>Par�ntesis Pub (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -663,7 +668,7 @@
           <td><strong>Prensa Caf� (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -677,7 +682,7 @@
           <td><strong>Prieto Hamburguesas - Claro Arena (5)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -691,7 +696,7 @@
           <td><strong>Prieto Hotdog - Claro Arena (6)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -705,7 +710,7 @@
           <td><strong>Quiet Fire (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -719,7 +724,7 @@
           <td><strong>SANTO PECADO (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -733,7 +738,7 @@
           <td><strong>Santa Marga Eventos (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -747,7 +752,7 @@
           <td><strong>Sodexo Corporate - TEVA (95)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -761,7 +766,7 @@
           <td><strong>TITO'S BURGER - DUOC - PLAZA VESPUCIO (56)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -775,7 +780,7 @@
           <td><strong>Templo Crapula (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -789,7 +794,7 @@
           <td><strong>Tita Roma Pizzer�a (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -803,7 +808,7 @@
           <td><strong>ACHOCLONADOS - CATOLICA DEL NORTE - COQUIMBO - BAR LACTEO (25)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -817,7 +822,7 @@
           <td><strong>ACHOCLONADOS - DUOC - ANTONIO VARAS (7)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -831,7 +836,7 @@
           <td><strong>Amatista (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -845,7 +850,7 @@
           <td><strong>Antiguo- Sodexo Minning - Kinross (4)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">ENTERPRISE</span></td>
-          <td class="right">$60</td>
+          <td class="right" data-mrr="60.0">$60</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -859,7 +864,7 @@
           <td><strong>Botiller�a el Tata (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">FOODSTORE</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -873,7 +878,7 @@
           <td><strong>Chuchurros (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Neyla Morales</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$64</td>
+          <td class="right" data-mrr="64.0">$64</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -887,7 +892,7 @@
           <td><strong>Club Olimpo (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Fernanda Herreros</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -901,7 +906,7 @@
           <td><strong>Empanadas Pitrufquen (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -915,7 +920,7 @@
           <td><strong>Eventos Club Providencia (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$208</td>
+          <td class="right" data-mrr="208.0">$208</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -929,7 +934,7 @@
           <td><strong>Lepe Hamburguesas - Claro Arena (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Fernanda Rossel</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$247</td>
+          <td class="right" data-mrr="247.0">$247</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -943,7 +948,7 @@
           <td><strong>Maki Club (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Fernanda Rossel</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -957,7 +962,7 @@
           <td><strong>Pizzer�a 7 Hermano (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Jose Antonio Silva</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -971,7 +976,7 @@
           <td><strong>Restorant Nuria 964 (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -985,7 +990,7 @@
           <td><strong>Pablo y Maria Delivery (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$32</td>
+          <td class="right" data-mrr="32.0">$32</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -999,7 +1004,7 @@
           <td><strong>Alparke - Mexicano (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$14</td>
+          <td class="right" data-mrr="14.0">$14</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1013,7 +1018,7 @@
           <td><strong>Burger Maker Calle 116 (2)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1027,7 +1032,7 @@
           <td><strong>CafePro (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1041,7 +1046,7 @@
           <td><strong>LA PATRONA ST  CAMPESTRE (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1055,7 +1060,7 @@
           <td><strong>San'Lu Restaurante (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1069,7 +1074,7 @@
           <td><strong>Yucatan (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1083,7 +1088,7 @@
           <td><strong>Bar La 99 (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$59</td>
+          <td class="right" data-mrr="59.0">$59</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -1097,7 +1102,7 @@
           <td><strong>Picarte Angus - Padro vegas (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -1111,7 +1116,7 @@
           <td><strong>Sr. Choclo Company (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$34</td>
+          <td class="right" data-mrr="34.0">$34</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -1125,7 +1130,7 @@
           <td><strong>Chamorindo El Original (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$78</td>
+          <td class="right" data-mrr="78.0">$78</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -1139,7 +1144,7 @@
           <td><strong>Landia (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$113</td>
+          <td class="right" data-mrr="113.0">$113</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1153,7 +1158,7 @@
           <td><strong>Nonna Mia! (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$55</td>
+          <td class="right" data-mrr="55.0">$55</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1167,7 +1172,7 @@
           <td><strong>Parrilla Norte�a Casa Blanca (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1181,7 +1186,7 @@
           <td><strong>Tacos Wikos (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$130</td>
+          <td class="right" data-mrr="130.0">$130</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1195,7 +1200,7 @@
           <td><strong>BASICO (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$119</td>
+          <td class="right" data-mrr="119.0">$119</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -1212,7 +1217,7 @@
     <table>
       <tr>
   <th>País</th><th>ID Toteat</th><th>Local</th><th>KAM</th>
-  <th>Plan</th><th>MRR USD</th><th>Estado SF</th><th>Billing</th>
+  <th>Plan</th><th class="th-sortable" onclick="sortByMRR(this)" title="Ordenar por MRR">MRR USD <span class="sort-icon">↕</span></th><th>Estado SF</th><th>Billing</th>
   <th>Días sin apertura</th><th>Fecha Alta</th><th>Días desde alta</th><th>Versión</th>
 </tr>
       
@@ -1222,7 +1227,7 @@
           <td><strong>Cafe Society - UP (11)</strong><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$68</td>
+          <td class="right" data-mrr="68.0">$68</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1236,7 +1241,7 @@
           <td><strong>Famiglia 3.5 (6)</strong><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1250,7 +1255,7 @@
           <td><strong>Good Acai Andes (3)</strong><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1264,7 +1269,7 @@
           <td><strong>Momo - AB Garita (3)</strong><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1278,7 +1283,7 @@
           <td><strong>ACHOCLONADOS - DUOC - PLAZA VESPUCIO (30)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1292,7 +1297,7 @@
           <td><strong>ACHOCLONADOS - DUOC - PUENTE ALTO (5)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1306,7 +1311,7 @@
           <td><strong>ACHOCLONADOS - DUOC - SAN CARLOS DE APOQUINDO (33)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1320,7 +1325,7 @@
           <td><strong>ACHOCLONADOS - SANTO TOM�S - CONCEPCION (14)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1334,7 +1339,7 @@
           <td><strong>ACHOCLONADOS - UDLA - PROVIDENCIA (20)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1348,7 +1353,7 @@
           <td><strong>ACHOCLONADOS - UDLA - VI�A DEL MAR (21)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1362,7 +1367,7 @@
           <td><strong>ACHOCLONADOS - USS - CONCEPCION (24)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1376,7 +1381,7 @@
           <td><strong>Buche (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1390,7 +1395,7 @@
           <td><strong>CAFET�N - PUC - SAN JOAQUIN HALL UNIVERSITARIO (47)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1404,7 +1409,7 @@
           <td><strong>Cafeton DUOC Antonio Varas (2)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1418,7 +1423,7 @@
           <td><strong>TITO'S BURGER - DUOC - PLAZA VESPUCIO (56)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1432,7 +1437,7 @@
           <td><strong>Tita Roma Pizzer�a (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1446,7 +1451,7 @@
           <td><strong>ACHOCLONADOS - CATOLICA DEL NORTE - COQUIMBO - BAR LACTEO (25)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -1460,7 +1465,7 @@
           <td><strong>ACHOCLONADOS - DUOC - ANTONIO VARAS (7)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -1474,7 +1479,7 @@
           <td><strong>Burger Maker Calle 116 (2)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1488,7 +1493,7 @@
           <td><strong>San'Lu Restaurante (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -1502,7 +1507,7 @@
           <td><strong>Picarte Angus - Padro vegas (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -1519,7 +1524,7 @@
     <table>
       <tr>
   <th>País</th><th>ID Toteat</th><th>Local</th><th>KAM</th>
-  <th>Plan</th><th>MRR USD</th><th>Estado SF</th><th>Billing</th>
+  <th>Plan</th><th class="th-sortable" onclick="sortByMRR(this)" title="Ordenar por MRR">MRR USD <span class="sort-icon">↕</span></th><th>Estado SF</th><th>Billing</th>
   <th>Días sin apertura</th><th>Fecha Alta</th><th>Días desde alta</th><th>Versión</th>
 </tr>
       <tr data-plat="legacy">
@@ -1528,7 +1533,7 @@
           <td><strong>BREAK & BRUNCH CEDIS (1)</strong></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>40</td>
           <td class="center">0</td>
@@ -1542,7 +1547,7 @@
           <td><strong>Barra Teatro  Metropolitano (1)</strong></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$45</td>
+          <td class="right" data-mrr="45.0">$45</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1556,7 +1561,7 @@
           <td><strong>CAFETERIA INSTITUTO PENINSULAR (1)</strong></td>
           <td>Jaqueline Lobaco</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$23</td>
+          <td class="right" data-mrr="23.0">$23</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1570,7 +1575,7 @@
           <td><strong>Cafe Society - CENTRO (6)</strong></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$44</td>
+          <td class="right" data-mrr="44.0">$44</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1584,7 +1589,7 @@
           <td><strong>Cafe Society - UP (11)</strong><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$68</td>
+          <td class="right" data-mrr="68.0">$68</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1598,7 +1603,7 @@
           <td><strong>Cafetería omeyocan (1)</strong></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$23</td>
+          <td class="right" data-mrr="23.0">$23</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1612,7 +1617,7 @@
           <td><strong>Central Café (1)</strong></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$127</td>
+          <td class="right" data-mrr="127.0">$127</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1626,7 +1631,7 @@
           <td><strong>Coffee Tec (1)</strong></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$56</td>
+          <td class="right" data-mrr="56.0">$56</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1640,7 +1645,7 @@
           <td><strong>Delicias Tía Ana (1)</strong></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$62</td>
+          <td class="right" data-mrr="62.0">$62</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1654,7 +1659,7 @@
           <td><strong>La Esperanza Tortería y Cafetería (1)</strong></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$78</td>
+          <td class="right" data-mrr="78.0">$78</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1668,7 +1673,7 @@
           <td><strong>Oyster House San Jose (2)</strong></td>
           <td>Giovanni Soriano</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1682,7 +1687,7 @@
           <td><strong>Restaurante Rosa Mexicano (1)</strong></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">PRO</span></td>
-          <td class="right">$39</td>
+          <td class="right" data-mrr="39.0">$39</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1696,7 +1701,7 @@
           <td><strong>Sireia (1)</strong></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$57</td>
+          <td class="right" data-mrr="57.0">$57</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1710,7 +1715,7 @@
           <td><strong>Sushiworld-Fruta (1)</strong></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$96</td>
+          <td class="right" data-mrr="96.0">$96</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1724,7 +1729,7 @@
           <td><strong>Ta-Chi Dogo Price Shoes Ecatepec (26)</strong></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$39</td>
+          <td class="right" data-mrr="39.0">$39</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1738,7 +1743,7 @@
           <td><strong>Tacos Don Pedro II (2)</strong></td>
           <td>Juan Carlos Munoz</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$50</td>
+          <td class="right" data-mrr="50.0">$50</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1752,7 +1757,7 @@
           <td><strong>Yaxte Verde & Dulce (1)</strong></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$29</td>
+          <td class="right" data-mrr="29.0">$29</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1766,7 +1771,7 @@
           <td><strong>Birria Don Juan (1)</strong></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$34</td>
+          <td class="right" data-mrr="34.0">$34</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -1780,7 +1785,7 @@
           <td><strong>Dulzzo Pastelería (1)</strong></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$78</td>
+          <td class="right" data-mrr="78.0">$78</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -1794,7 +1799,7 @@
           <td><strong>HIdroponia (1)</strong></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$56</td>
+          <td class="right" data-mrr="56.0">$56</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -1808,7 +1813,7 @@
           <td><strong>TOSTADO "COFFEE & BRUNCH" (1)</strong></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$56</td>
+          <td class="right" data-mrr="56.0">$56</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -1822,7 +1827,7 @@
           <td><strong>Taquería Rodríguez La pasadita (2)</strong></td>
           <td>Jaqueline Lobaco</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$120</td>
+          <td class="right" data-mrr="120.0">$120</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -1836,7 +1841,7 @@
           <td><strong>TequeGuayi Cedis (1)</strong></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$80</td>
+          <td class="right" data-mrr="80.0">$80</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -1850,7 +1855,7 @@
           <td><strong>Chamorindo El Original (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$78</td>
+          <td class="right" data-mrr="78.0">$78</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -1864,7 +1869,7 @@
           <td><strong>Motulito (1)</strong></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$57</td>
+          <td class="right" data-mrr="57.0">$57</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -1878,7 +1883,7 @@
           <td><strong>ALMACEN PRINCIPAL (1)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$27</td>
+          <td class="right" data-mrr="27.0">$27</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1892,7 +1897,7 @@
           <td><strong>AZAHAR INSTITUCIONAL (4)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CENTROPRODUCCION</span></td>
-          <td class="right">$40</td>
+          <td class="right" data-mrr="40.0">$40</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1906,7 +1911,7 @@
           <td><strong>Adriano eventos (2)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$46</td>
+          <td class="right" data-mrr="46.0">$46</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1920,7 +1925,7 @@
           <td><strong>Animal Cocina Eventos (16)</strong></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>40</td>
           <td class="center">0</td>
@@ -1934,7 +1939,7 @@
           <td><strong>Atrium Food And Drinks Eventos (13)</strong></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$117</td>
+          <td class="right" data-mrr="117.0">$117</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1948,7 +1953,7 @@
           <td><strong>Atrium Pizza y Burger Manga (3)</strong></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$275</td>
+          <td class="right" data-mrr="275.0">$275</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1962,7 +1967,7 @@
           <td><strong>Azahar Página (7)</strong></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>40</td>
           <td class="center">0</td>
@@ -1976,7 +1981,7 @@
           <td><strong>BAVARIA (9)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$88</td>
+          <td class="right" data-mrr="88.0">$88</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -1990,7 +1995,7 @@
           <td><strong>Bar Cinco Licorera Coliseo Live (5)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2004,7 +2009,7 @@
           <td><strong>Bicono Eventos (1)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$59</td>
+          <td class="right" data-mrr="59.0">$59</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2018,7 +2023,7 @@
           <td><strong>Blend local fundadores (3)</strong></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$18</td>
+          <td class="right" data-mrr="18.0">$18</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2032,7 +2037,7 @@
           <td><strong>COCINA COLISEO MEDPLUS (1)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$17</td>
+          <td class="right" data-mrr="17.0">$17</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2046,7 +2051,7 @@
           <td><strong>Casino Agency Global Company SAS (1)</strong></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$27</td>
+          <td class="right" data-mrr="27.0">$27</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2060,7 +2065,7 @@
           <td><strong>Con Kafé (2)</strong></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$38</td>
+          <td class="right" data-mrr="38.0">$38</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2074,7 +2079,7 @@
           <td><strong>Ecobowls Cali (1)</strong></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$38</td>
+          <td class="right" data-mrr="38.0">$38</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2088,7 +2093,7 @@
           <td><strong>Empanadas Típicas Portoalegre (Franquicia) (2)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$59</td>
+          <td class="right" data-mrr="59.0">$59</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2102,7 +2107,7 @@
           <td><strong>Famiglia 3.5 (6)</strong><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2116,7 +2121,7 @@
           <td><strong>Ferias y Eventos (3)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$73</td>
+          <td class="right" data-mrr="73.0">$73</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2130,7 +2135,7 @@
           <td><strong>Good Acai Andes (3)</strong><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2144,7 +2149,7 @@
           <td><strong>Horeb Express (1)</strong></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$59</td>
+          <td class="right" data-mrr="59.0">$59</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2158,7 +2163,7 @@
           <td><strong>Ilatina Speakeasy (4)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$8</td>
+          <td class="right" data-mrr="8.0">$8</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2172,7 +2177,7 @@
           <td><strong>Ilatina eventos (3)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2186,7 +2191,7 @@
           <td><strong>Le pork (1)</strong></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$28</td>
+          <td class="right" data-mrr="28.0">$28</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2200,7 +2205,7 @@
           <td><strong>Lechoneria San Pernil (1)</strong></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$43</td>
+          <td class="right" data-mrr="43.0">$43</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2214,7 +2219,7 @@
           <td><strong>Maclau Pan y Café - Paseo del Ángel (1)</strong></td>
           <td>Yurani Torres</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$16</td>
+          <td class="right" data-mrr="16.0">$16</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2228,7 +2233,7 @@
           <td><strong>No Mames Güey (1)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">PRO</span></td>
-          <td class="right">$111</td>
+          <td class="right" data-mrr="111.0">$111</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2242,7 +2247,7 @@
           <td><strong>OMR - ZONA T (2)</strong></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$37</td>
+          <td class="right" data-mrr="37.0">$37</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2256,7 +2261,7 @@
           <td><strong>ONE PIZZERIA RAPPITURBO (4)</strong></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$38</td>
+          <td class="right" data-mrr="38.0">$38</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2270,7 +2275,7 @@
           <td><strong>Oakberry Açaí Eventos (4)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$73</td>
+          <td class="right" data-mrr="73.0">$73</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2284,7 +2289,7 @@
           <td><strong>Pepasta (1)</strong></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$33</td>
+          <td class="right" data-mrr="33.0">$33</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2298,7 +2303,7 @@
           <td><strong>Pikoniggio Restaurante (1)</strong></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$59</td>
+          <td class="right" data-mrr="59.0">$59</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2312,7 +2317,7 @@
           <td><strong>Pizza town unico yumbo (32)</strong></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>40</td>
           <td class="center">0</td>
@@ -2326,7 +2331,7 @@
           <td><strong>Pizzería Tío Tom (1)</strong></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$28</td>
+          <td class="right" data-mrr="28.0">$28</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2340,7 +2345,7 @@
           <td><strong>Pollos La Riviera Soacha Parque (4)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$138</td>
+          <td class="right" data-mrr="138.0">$138</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2354,7 +2359,7 @@
           <td><strong>RESTO BAR 80 (1)</strong></td>
           <td>Naty Cardona</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$32</td>
+          <td class="right" data-mrr="32.0">$32</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2368,7 +2373,7 @@
           <td><strong>Raj Burger (1)</strong></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$28</td>
+          <td class="right" data-mrr="28.0">$28</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2382,7 +2387,7 @@
           <td><strong>Restaurante Debora (1)</strong></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$88</td>
+          <td class="right" data-mrr="88.0">$88</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2396,7 +2401,7 @@
           <td><strong>Restaurante Estadero Santander (1)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$6</td>
+          <td class="right" data-mrr="6.0">$6</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2410,7 +2415,7 @@
           <td><strong>Restaurante Fortaleza de Piedra (1)</strong></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$88</td>
+          <td class="right" data-mrr="88.0">$88</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2424,7 +2429,7 @@
           <td><strong>Sayfit (1)</strong></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>40</td>
           <td class="center">0</td>
@@ -2438,7 +2443,7 @@
           <td><strong>Smoking Burgers Cedritos (1)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$74</td>
+          <td class="right" data-mrr="74.0">$74</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2452,7 +2457,7 @@
           <td><strong>Smoking Burgers Cinemateca (6)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$83</td>
+          <td class="right" data-mrr="83.0">$83</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2466,7 +2471,7 @@
           <td><strong>Smoking Burgers Parkway (4)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$104</td>
+          <td class="right" data-mrr="104.0">$104</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2480,7 +2485,7 @@
           <td><strong>Smoking Molly (9)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$73</td>
+          <td class="right" data-mrr="73.0">$73</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2494,7 +2499,7 @@
           <td><strong>Taiwán Wang Express (2)</strong></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$73</td>
+          <td class="right" data-mrr="73.0">$73</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2508,7 +2513,7 @@
           <td><strong>Tejo la embajada EVENTOS- (2)</strong></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$64</td>
+          <td class="right" data-mrr="64.0">$64</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2522,7 +2527,7 @@
           <td><strong>Tremé eventos (1)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$52</td>
+          <td class="right" data-mrr="52.0">$52</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2536,7 +2541,7 @@
           <td><strong>Tropiko (1)</strong></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$21</td>
+          <td class="right" data-mrr="21.0">$21</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2550,7 +2555,7 @@
           <td><strong>Vergalandia (1)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$16</td>
+          <td class="right" data-mrr="16.0">$16</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2564,7 +2569,7 @@
           <td><strong>Viral Hub - Calle 84 (1)</strong></td>
           <td>Luciano Elizondo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2578,7 +2583,7 @@
           <td><strong>Wang Express (1)</strong></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$73</td>
+          <td class="right" data-mrr="73.0">$73</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2592,7 +2597,7 @@
           <td><strong>Bar Continental (1)</strong></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$81</td>
+          <td class="right" data-mrr="81.0">$81</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">1</td>
@@ -2606,7 +2611,7 @@
           <td><strong>CENTRAL (1)</strong></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$103</td>
+          <td class="right" data-mrr="103.0">$103</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -2620,7 +2625,7 @@
           <td><strong>Famiglia Pizzeria Eventos (5)</strong></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$81</td>
+          <td class="right" data-mrr="81.0">$81</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -2634,7 +2639,7 @@
           <td><strong>Pita Madre Zona Norte (10)</strong></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$124</td>
+          <td class="right" data-mrr="124.0">$124</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -2648,7 +2653,7 @@
           <td><strong>Q'Burger Planta (1)</strong></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan">CENTROPRODUCCION</span></td>
-          <td class="right">$27</td>
+          <td class="right" data-mrr="27.0">$27</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -2662,7 +2667,7 @@
           <td><strong>Pablo y Maria Delivery (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$32</td>
+          <td class="right" data-mrr="32.0">$32</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -2676,7 +2681,7 @@
           <td><strong>ARRFARAR (1)</strong></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>40</td>
           <td class="center">0</td>
@@ -2690,7 +2695,7 @@
           <td><strong>EL SULTAN ALTERPOINT (2)</strong></td>
           <td>Camila Agüero</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2704,7 +2709,7 @@
           <td><strong>Feriado Maschwitz (3)</strong></td>
           <td>Camila Agüero</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$62</td>
+          <td class="right" data-mrr="62.0">$62</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2718,7 +2723,7 @@
           <td><strong>Lago (5)</strong></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>40</td>
           <td class="center">0</td>
@@ -2732,7 +2737,7 @@
           <td><strong>PTOPARAR (1)</strong></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>40</td>
           <td class="center">0</td>
@@ -2746,7 +2751,7 @@
           <td><strong>27 F Chilean Way (1)</strong></td>
           <td>Fernanda Rossel</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$119</td>
+          <td class="right" data-mrr="119.0">$119</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2760,7 +2765,7 @@
           <td><strong>45 Vino y Cocina (1)</strong></td>
           <td>Fernanda Herreros</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$43</td>
+          <td class="right" data-mrr="43.0">$43</td>
           <td>Hibernación</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2774,7 +2779,7 @@
           <td><strong>Bar_La_Virgen (1)</strong></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CENTROPRODUCCION</span></td>
-          <td class="right">$8</td>
+          <td class="right" data-mrr="8.0">$8</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2788,7 +2793,7 @@
           <td><strong>COCINA CENTRAL T1 (2)</strong></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CENTROPRODUCCION</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2802,7 +2807,7 @@
           <td><strong>CP Heladería The Crepe Café (7)</strong></td>
           <td>Fernanda Rossel</td>
           <td><span class="badge badge-plan">CENTROPRODUCCION</span></td>
-          <td class="right">$44</td>
+          <td class="right" data-mrr="44.0">$44</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2816,7 +2821,7 @@
           <td><strong>Casa Matrix 515 C.P. (14)</strong></td>
           <td>Rafael Garcia</td>
           <td><span class="badge badge-plan">CENTROPRODUCCION</span></td>
-          <td class="right">$44</td>
+          <td class="right" data-mrr="44.0">$44</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2830,7 +2835,7 @@
           <td><strong>Cerveceria CODA (1)</strong></td>
           <td>Jose Antonio Silva</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$85</td>
+          <td class="right" data-mrr="85.0">$85</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2844,7 +2849,7 @@
           <td><strong>Chilenazo Santiago (2)</strong></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>40</td>
           <td class="center">0</td>
@@ -2858,7 +2863,7 @@
           <td><strong>Chocolatería de la P (2)</strong></td>
           <td>Jose Antonio Silva</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$77</td>
+          <td class="right" data-mrr="77.0">$77</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2872,7 +2877,7 @@
           <td><strong>Cream Roll Plaza Norte - NUEVO (23)</strong></td>
           <td>Fernanda Rossel</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2886,7 +2891,7 @@
           <td><strong>Don Teo Machali (1)</strong></td>
           <td>Fernanda Rossel</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$253</td>
+          <td class="right" data-mrr="253.0">$253</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2900,7 +2905,7 @@
           <td><strong>Don Teo Rancagua (1)</strong></td>
           <td>Fernanda Rossel</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$224</td>
+          <td class="right" data-mrr="224.0">$224</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2914,7 +2919,7 @@
           <td><strong>Eliglu Vitacura (1)</strong></td>
           <td>Fernanda Herreros</td>
           <td><span class="badge badge-plan">FOODSTORE</span></td>
-          <td class="right">$37</td>
+          <td class="right" data-mrr="37.0">$37</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2928,7 +2933,7 @@
           <td><strong>Forá (1)</strong></td>
           <td>Jose Antonio Silva</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$205</td>
+          <td class="right" data-mrr="205.0">$205</td>
           <td>Hibernación</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2942,7 +2947,7 @@
           <td><strong>Fuegos de Cachagua (2)</strong></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2956,7 +2961,7 @@
           <td><strong>Kbross burger (1)</strong></td>
           <td>Rafael Garcia</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$69</td>
+          <td class="right" data-mrr="69.0">$69</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2970,7 +2975,7 @@
           <td><strong>Kento Comercializadora  (KSC SpA) (1)</strong></td>
           <td>Fernanda Herreros</td>
           <td><span class="badge badge-plan">CENTROPRODUCCION</span></td>
-          <td class="right">$165</td>
+          <td class="right" data-mrr="165.0">$165</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2984,7 +2989,7 @@
           <td><strong>Kiosko La Estación (2)</strong></td>
           <td>Fernanda Herreros</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$10</td>
+          <td class="right" data-mrr="10.0">$10</td>
           <td>Hibernación</td>
           <td>40</td>
           <td class="center">0</td>
@@ -2998,7 +3003,7 @@
           <td><strong>La Piojera - Eventos (2)</strong></td>
           <td>Jose Antonio Silva</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -3012,7 +3017,7 @@
           <td><strong>Maxi Market (1)</strong></td>
           <td>Rafael Garcia</td>
           <td><span class="badge badge-plan">FOODSTORE</span></td>
-          <td class="right">$61</td>
+          <td class="right" data-mrr="61.0">$61</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -3026,7 +3031,7 @@
           <td><strong>Mcbyron (1)</strong></td>
           <td>Fernanda Herreros</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$395</td>
+          <td class="right" data-mrr="395.0">$395</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -3040,7 +3045,7 @@
           <td><strong>MonteLion (4)</strong></td>
           <td>Jose Antonio Silva</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -3054,7 +3059,7 @@
           <td><strong>Pastelería (1)</strong></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CENTROPRODUCCION</span></td>
-          <td class="right">$44</td>
+          <td class="right" data-mrr="44.0">$44</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -3068,7 +3073,7 @@
           <td><strong>Pergamino & Andiamo Pizzería (1)</strong></td>
           <td>Neyla Morales</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$171</td>
+          <td class="right" data-mrr="171.0">$171</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -3082,7 +3087,7 @@
           <td><strong>Santeria (1)</strong></td>
           <td>Rafael Garcia</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -3096,7 +3101,7 @@
           <td><strong>SushiBlues República (17)</strong></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$16</td>
+          <td class="right" data-mrr="16.0">$16</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -3110,7 +3115,7 @@
           <td><strong>UNCLEF_T2_DEP (1)</strong></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$141</td>
+          <td class="right" data-mrr="141.0">$141</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -3124,7 +3129,7 @@
           <td><strong>Uncle Fletch La Dehesa (3)</strong></td>
           <td>Jose Antonio Silva</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$235</td>
+          <td class="right" data-mrr="235.0">$235</td>
           <td>Hibernación</td>
           <td>40</td>
           <td class="center">0</td>
@@ -3138,7 +3143,7 @@
           <td><strong>Café Oyku (2)</strong></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$81</td>
+          <td class="right" data-mrr="81.0">$81</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -3152,7 +3157,7 @@
           <td><strong>Comedor Pelicano (1)</strong></td>
           <td>Neyla Morales</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$197</td>
+          <td class="right" data-mrr="197.0">$197</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -3166,7 +3171,7 @@
           <td><strong>DISTRITO BUIN (1)</strong></td>
           <td>Fernanda Herreros</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$86</td>
+          <td class="right" data-mrr="86.0">$86</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -3180,7 +3185,7 @@
           <td><strong>Esquina 21 (1)</strong></td>
           <td>Jose Antonio Silva</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$146</td>
+          <td class="right" data-mrr="146.0">$146</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">1</td>
@@ -3194,7 +3199,7 @@
           <td><strong>Explorers House Punta Arenas (1)</strong></td>
           <td>Jose Antonio Silva</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right">$285</td>
+          <td class="right" data-mrr="285.0">$285</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -3208,7 +3213,7 @@
           <td><strong>Gallardia (2)</strong></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$98</td>
+          <td class="right" data-mrr="98.0">$98</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -3222,7 +3227,7 @@
           <td><strong>Laurel (1)</strong></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$44</td>
+          <td class="right" data-mrr="44.0">$44</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -3236,7 +3241,7 @@
           <td><strong>Pez Callao (1)</strong></td>
           <td>Fernanda Rossel</td>
           <td><span class="badge badge-plan">PRO</span></td>
-          <td class="right">$138</td>
+          <td class="right" data-mrr="138.0">$138</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -3250,7 +3255,7 @@
           <td><strong>Philia Reñaca (6)</strong></td>
           <td>Fernanda Herreros</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$77</td>
+          <td class="right" data-mrr="77.0">$77</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -3264,7 +3269,7 @@
           <td><strong>Restaurante Tierras de Lolol (1)</strong></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$200</td>
+          <td class="right" data-mrr="200.0">$200</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -3278,7 +3283,7 @@
           <td><strong>Sunare Sushi (1)</strong></td>
           <td>Rafael Garcia</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right">$59</td>
+          <td class="right" data-mrr="59.0">$59</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -3292,7 +3297,7 @@
           <td><strong>Ánima Pastelería (1)</strong></td>
           <td>Neyla Morales</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$85</td>
+          <td class="right" data-mrr="85.0">$85</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
@@ -3306,7 +3311,7 @@
           <td><strong>DONDE PANCHO COCINA & BAR (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Neyla Morales</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$82</td>
+          <td class="right" data-mrr="82.0">$82</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -3320,7 +3325,7 @@
           <td><strong>Del Cielo Cafetería (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$43</td>
+          <td class="right" data-mrr="43.0">$43</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -3334,7 +3339,7 @@
           <td><strong>Donde la Berni 2 (2)</strong></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$11</td>
+          <td class="right" data-mrr="11.0">$11</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -3348,7 +3353,7 @@
           <td><strong>Panimas Plaza (2)</strong></td>
           <td>Neyla Morales</td>
           <td><span class="badge badge-plan">FOODSTORE</span></td>
-          <td class="right">$62</td>
+          <td class="right" data-mrr="62.0">$62</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -3362,7 +3367,7 @@
           <td><strong>Pepa’s (1)</strong></td>
           <td>Neyla Morales</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$9</td>
+          <td class="right" data-mrr="9.0">$9</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -3376,7 +3381,7 @@
           <td><strong>Rendibu Portal Centro (10)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Fernanda Rossel</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$85</td>
+          <td class="right" data-mrr="85.0">$85</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -3390,7 +3395,7 @@
           <td><strong>LA FOURMI GRACIA (1)</strong></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$59</td>
+          <td class="right" data-mrr="59.0">$59</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -3404,7 +3409,7 @@
           <td><strong>Momo - AB Garita (3)</strong><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">0</td>
@@ -3418,7 +3423,7 @@
           <td><strong>CC Restaurantes SAC - Lince (1)</strong></td>
           <td>Rafael Garcia</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$142</td>
+          <td class="right" data-mrr="142.0">$142</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -3432,7 +3437,7 @@
           <td><strong>ACHOCLONADOS - DUOC - PLAZA VESPUCIO (30)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3446,7 +3451,7 @@
           <td><strong>ACHOCLONADOS - DUOC - PUENTE ALTO (5)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3460,7 +3465,7 @@
           <td><strong>ACHOCLONADOS - DUOC - SAN CARLOS DE APOQUINDO (33)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3474,7 +3479,7 @@
           <td><strong>ACHOCLONADOS - MALL - EU 15 NORTE (3)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3488,7 +3493,7 @@
           <td><strong>ACHOCLONADOS - SANTO TOM�S - CONCEPCION (14)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3502,7 +3507,7 @@
           <td><strong>ACHOCLONADOS - UDLA - PROVIDENCIA (20)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3516,7 +3521,7 @@
           <td><strong>ACHOCLONADOS - UDLA - VI�A DEL MAR (21)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3530,7 +3535,7 @@
           <td><strong>ACHOCLONADOS - USS - CONCEPCION (24)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3544,7 +3549,7 @@
           <td><strong>Bakery (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3558,7 +3563,7 @@
           <td><strong>Bohmoz & Co (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Neyla Morales</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$112</td>
+          <td class="right" data-mrr="112.0">$112</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3572,7 +3577,7 @@
           <td><strong>Buche (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3586,7 +3591,7 @@
           <td><strong>CAFET�N - PUC - SAN JOAQUIN HALL UNIVERSITARIO (47)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3600,7 +3605,7 @@
           <td><strong>Cafeton DUOC Antonio Varas (2)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3614,7 +3619,7 @@
           <td><strong>Casino Nuria (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3628,7 +3633,7 @@
           <td><strong>Claro Vip Hamburguesas - Claro Arena (11)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3642,7 +3647,7 @@
           <td><strong>Claro Vip Hotdog - Claro Arena (12)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3656,7 +3661,7 @@
           <td><strong>Don Jos� Local 918 (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$198</td>
+          <td class="right" data-mrr="198.0">$198</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3670,7 +3675,7 @@
           <td><strong>Fouilloux Hamburguesas - Claro Arena (3)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3684,7 +3689,7 @@
           <td><strong>Fouilloux Hotdog - Claro Arena (4)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3698,7 +3703,7 @@
           <td><strong>La Trinidad Base (10000)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3712,7 +3717,7 @@
           <td><strong>Lepe Hotdog - Claro Arena (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3726,7 +3731,7 @@
           <td><strong>Livingston Hamburguesas - Claro Arena (7)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3740,7 +3745,7 @@
           <td><strong>Livingston Hotdog - Claro Arena (8)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3754,7 +3759,7 @@
           <td><strong>Livingston Snack Norte - Claro Arena (9)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3768,7 +3773,7 @@
           <td><strong>Livingston Snack Sur - Claro Arena (10)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3782,7 +3787,7 @@
           <td><strong>Lounge B Cafeter�a - Claro Arena (14)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3796,7 +3801,7 @@
           <td><strong>Lounge D Cafeter�a - Claro Arena (16)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3810,7 +3815,7 @@
           <td><strong>Offside (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right">$75</td>
+          <td class="right" data-mrr="75.0">$75</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3824,7 +3829,7 @@
           <td><strong>Par�ntesis Pub (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3838,7 +3843,7 @@
           <td><strong>Prensa Caf� (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3852,7 +3857,7 @@
           <td><strong>Prieto Hamburguesas - Claro Arena (5)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3866,7 +3871,7 @@
           <td><strong>Prieto Hotdog - Claro Arena (6)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3880,7 +3885,7 @@
           <td><strong>Quiet Fire (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3894,7 +3899,7 @@
           <td><strong>SANTO PECADO (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3908,7 +3913,7 @@
           <td><strong>Santa Marga Eventos (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3922,7 +3927,7 @@
           <td><strong>Sodexo Corporate - TEVA (95)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3936,7 +3941,7 @@
           <td><strong>TITO'S BURGER - DUOC - PLAZA VESPUCIO (56)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3950,7 +3955,7 @@
           <td><strong>Templo Crapula (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3964,7 +3969,7 @@
           <td><strong>Tita Roma Pizzer�a (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -3978,7 +3983,7 @@
           <td><strong>ACHOCLONADOS - CATOLICA DEL NORTE - COQUIMBO - BAR LACTEO (25)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -3992,7 +3997,7 @@
           <td><strong>ACHOCLONADOS - DUOC - ANTONIO VARAS (7)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4006,7 +4011,7 @@
           <td><strong>Amatista (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4020,7 +4025,7 @@
           <td><strong>Antiguo- Sodexo Minning - Kinross (4)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">ENTERPRISE</span></td>
-          <td class="right">$60</td>
+          <td class="right" data-mrr="60.0">$60</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4034,7 +4039,7 @@
           <td><strong>Botiller�a el Tata (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">FOODSTORE</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4048,7 +4053,7 @@
           <td><strong>Chuchurros (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Neyla Morales</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$64</td>
+          <td class="right" data-mrr="64.0">$64</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4062,7 +4067,7 @@
           <td><strong>Club Olimpo (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Fernanda Herreros</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4076,7 +4081,7 @@
           <td><strong>Empanadas Pitrufquen (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4090,7 +4095,7 @@
           <td><strong>Eventos Club Providencia (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$208</td>
+          <td class="right" data-mrr="208.0">$208</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4104,7 +4109,7 @@
           <td><strong>Lepe Hamburguesas - Claro Arena (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Fernanda Rossel</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$247</td>
+          <td class="right" data-mrr="247.0">$247</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4118,7 +4123,7 @@
           <td><strong>Maki Club (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Fernanda Rossel</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4132,7 +4137,7 @@
           <td><strong>Pizzer�a 7 Hermano (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Jose Antonio Silva</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4146,7 +4151,7 @@
           <td><strong>Restorant Nuria 964 (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Katherine Boscan</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4160,7 +4165,7 @@
           <td><strong>Alparke - Mexicano (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$14</td>
+          <td class="right" data-mrr="14.0">$14</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -4174,7 +4179,7 @@
           <td><strong>Burger Maker Calle 116 (2)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -4188,7 +4193,7 @@
           <td><strong>CafePro (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -4202,7 +4207,7 @@
           <td><strong>LA PATRONA ST  CAMPESTRE (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -4216,7 +4221,7 @@
           <td><strong>San'Lu Restaurante (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -4230,7 +4235,7 @@
           <td><strong>Yucatan (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -4244,7 +4249,7 @@
           <td><strong>Bar La 99 (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right">$59</td>
+          <td class="right" data-mrr="59.0">$59</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4258,7 +4263,7 @@
           <td><strong>Picarte Angus - Padro vegas (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Ricardo Robayo</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4272,7 +4277,7 @@
           <td><strong>Sr. Choclo Company (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$34</td>
+          <td class="right" data-mrr="34.0">$34</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4286,7 +4291,7 @@
           <td><strong>Landia (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$113</td>
+          <td class="right" data-mrr="113.0">$113</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -4300,7 +4305,7 @@
           <td><strong>Nonna Mia! (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right">$55</td>
+          <td class="right" data-mrr="55.0">$55</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -4314,7 +4319,7 @@
           <td><strong>Parrilla Norte�a Casa Blanca (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right"></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -4328,7 +4333,7 @@
           <td><strong>Tacos Wikos (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$130</td>
+          <td class="right" data-mrr="130.0">$130</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
@@ -4342,7 +4347,7 @@
           <td><strong>BASICO (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right">$119</td>
+          <td class="right" data-mrr="119.0">$119</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
@@ -4355,7 +4360,7 @@
 </div>
 
 <div class="footer">
-  <span>Actualizado: 06/04/2026 10:12 · Próximo: mañana 11:00 AM</span>
+  <span>Actualizado: 06/04/2026 10:25 · Próximo: mañana 11:00 AM</span>
   <a href="https://toteat.com">toteat.com</a>
 </div>
 
@@ -4391,6 +4396,21 @@ function applyFilters() {
     const matchVer  = currentVer === 'all' || platAttr === currentVer;
     row.style.display = (matchText && matchVer) ? '' : 'none';
   });
+}
+
+function sortByMRR(th) {
+  const asc = th.classList.contains('desc');
+  document.querySelectorAll('.th-sortable').forEach(h => h.classList.remove('asc','desc'));
+  th.classList.add(asc ? 'asc' : 'desc');
+  const table = th.closest('table');
+  const tbody = table.querySelector('tbody') || table;
+  const rows = Array.from(tbody.querySelectorAll('tr:not(:first-child)'));
+  rows.sort((a, b) => {
+    const va = parseFloat(a.querySelector('[data-mrr]')?.getAttribute('data-mrr') ?? -1);
+    const vb = parseFloat(b.querySelector('[data-mrr]')?.getAttribute('data-mrr') ?? -1);
+    return asc ? va - vb : vb - va;
+  });
+  rows.forEach(r => tbody.appendChild(r));
 }
 </script>
 </body>
