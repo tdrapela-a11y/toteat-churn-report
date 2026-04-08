@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Churn Toteat — 07/04/2026</title>
+<title>Churn Toteat — 08/04/2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -109,36 +109,36 @@
 <div class="topbar">
   <div class="topbar-logo">tot<em>eat</em></div>
   <div class="topbar-right">
-    <span class="topbar-date">Reporte Churn · 07/04/2026</span>
-    <span class="topbar-badge">212 locales</span>
+    <span class="topbar-date">Reporte Churn · 08/04/2026</span>
+    <span class="topbar-badge">174 locales</span>
   </div>
 </div>
 
 <div class="kpis">
-  <div class="kpi accent"><div class="val">212</div><div class="lbl">Total en churn</div></div>
-  <div class="kpi green"><div class="val">46</div><div class="lbl">Nuevos hoy</div></div>
-  <div class="kpi orange"><div class="val">18</div><div class="lbl">Early churn &lt;90d</div></div>
-  <div class="kpi"><div class="val">32</div><div class="lbl">Sin KAM</div></div>
-  <div class="kpi"><div class="val">148</div><div class="lbl">Legacy</div></div>
-  <div class="kpi"><div class="val">64</div><div class="lbl">New Platform</div></div>
+  <div class="kpi accent"><div class="val">174</div><div class="lbl">Total en churn</div></div>
+  <div class="kpi green"><div class="val">16</div><div class="lbl">Nuevos hoy</div></div>
+  <div class="kpi orange"><div class="val">12</div><div class="lbl">Early churn &lt;90d</div></div>
+  <div class="kpi"><div class="val">15</div><div class="lbl">Sin KAM</div></div>
+  <div class="kpi"><div class="val">142</div><div class="lbl">Legacy</div></div>
+  <div class="kpi"><div class="val">32</div><div class="lbl">New Platform</div></div>
 </div>
 
 <div class="country-strip"><div class="cc">
-      <span class="cc-flag">🇨🇱</span>
-      <div>
-        <div class="cc-name">Chile</div>
-        <div style="display:flex;align-items:center;gap:6px">
-          <span class="cc-count">101</span>
-          <div class="cc-pills"><span class="pill-new">+19 nuevos</span><span class="pill-early">⚡11</span></div>
-        </div>
-      </div>
-    </div><div class="cc">
       <span class="cc-flag">🇨🇴</span>
       <div>
         <div class="cc-name">Colombia</div>
         <div style="display:flex;align-items:center;gap:6px">
-          <span class="cc-count">72</span>
-          <div class="cc-pills"><span class="pill-new">+18 nuevos</span><span class="pill-early">⚡6</span></div>
+          <span class="cc-count">69</span>
+          <div class="cc-pills"><span class="pill-new">+3 nuevos</span><span class="pill-early">⚡4</span></div>
+        </div>
+      </div>
+    </div><div class="cc">
+      <span class="cc-flag">🇨🇱</span>
+      <div>
+        <div class="cc-name">Chile</div>
+        <div style="display:flex;align-items:center;gap:6px">
+          <span class="cc-count">69</span>
+          <div class="cc-pills"><span class="pill-new">+7 nuevos</span><span class="pill-early">⚡7</span></div>
         </div>
       </div>
     </div><div class="cc">
@@ -146,8 +146,8 @@
       <div>
         <div class="cc-name">México</div>
         <div style="display:flex;align-items:center;gap:6px">
-          <span class="cc-count">28</span>
-          <div class="cc-pills"><span class="pill-new">+5 nuevos</span><span class="pill-early">⚡1</span></div>
+          <span class="cc-count">26</span>
+          <div class="cc-pills"><span class="pill-new">+6 nuevos</span><span class="pill-early">⚡1</span></div>
         </div>
       </div>
     </div><div class="cc">
@@ -156,7 +156,7 @@
         <div class="cc-name">Argentina</div>
         <div style="display:flex;align-items:center;gap:6px">
           <span class="cc-count">9</span>
-          <div class="cc-pills"><span class="pill-new">+4 nuevos</span></div>
+          <div class="cc-pills"></div>
         </div>
       </div>
     </div><div class="cc">
@@ -168,22 +168,13 @@
           <div class="cc-pills"></div>
         </div>
       </div>
-    </div><div class="cc">
-      <span class="cc-flag">🇵🇪</span>
-      <div>
-        <div class="cc-name">Perú</div>
-        <div style="display:flex;align-items:center;gap:6px">
-          <span class="cc-count">1</span>
-          <div class="cc-pills"></div>
-        </div>
-      </div>
     </div></div>
 
 <div class="toolbar">
   <div class="tabs">
-    <button class="tab active" onclick="switchTab('nuevos',this)">Nuevos (46)</button>
-    <button class="tab" onclick="switchTab('early',this)">Early Churn (18)</button>
-    <button class="tab" onclick="switchTab('total',this)">Total (212)</button>
+    <button class="tab active" onclick="switchTab('nuevos',this)">Nuevos (16)</button>
+    <button class="tab" onclick="switchTab('early',this)">Early Churn (12)</button>
+    <button class="tab" onclick="switchTab('total',this)">Total (174)</button>
   </div>
   <div class="ver-filters">
     <button class="ver-btn active" onclick="filterVer('all',this)">Todos</button>
@@ -206,83 +197,13 @@
 </tr>
       
       <tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇦🇷 Argentina</td>
-          <td class="mono">6323275950718976-00001</td>
-          <td><strong>Mariscal Patio Cervecero (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Camila Agüero</td>
-          <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right" data-mrr="17.0">$17</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2022-08-31</td>
-          <td class="center">1315</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇦🇷 Argentina</td>
-          <td class="mono">5588741840961536-00003</td>
-          <td><strong>Mona Bar (3)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Camila Agüero</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="32.0">$32</td>
-          <td>Hibernación</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2025-05-16</td>
-          <td class="center">326</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇦🇷 Argentina</td>
-          <td class="mono">5588741840961536-00002</td>
-          <td><strong>Tampa (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Camila Agüero</td>
+          <td>🇨🇱 Chile</td>
+          <td class="mono">5800692414152704-00005</td>
+          <td><strong>Kaffe Laguna (5)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="28.0">$28</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2023-05-31</td>
-          <td class="center">1042</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇦🇷 Argentina</td>
-          <td class="mono">5002470618824704-00001</td>
-          <td><strong>WHATAFOOD (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Camila Agüero</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="28.0">$28</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2023-04-30</td>
-          <td class="center">1073</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">4922080046612480-00001</td>
-          <td><strong>London Coffee 5 (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Jose Antonio Silva</td>
-          <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right" data-mrr="33.0">$33</td>
-          <td>Hibernación</td>
-          <td>40</td>
-          <td class="center">0</td>
-          <td>2022-12-31</td>
-          <td class="center">1193</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">4877187191406592-00001</td>
-          <td><strong>Aitué Restobar (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Maria Martinez</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="85.0">$85</td>
-          <td>Cartera</td>
+          <td class="right" data-mrr="-1"></td>
+          <td></td>
           <td>40</td>
           <td class="center">1</td>
           <td></td>
@@ -291,562 +212,212 @@
         </tr>
 <tr style="background:#E8F5E9" data-plat="legacy">
           <td>🇨🇱 Chile</td>
-          <td class="mono">4651354962001920-00001</td>
-          <td><strong>Azteca Restobar (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Maria Martinez</td>
+          <td class="mono">4840609814282240-00001</td>
+          <td><strong>Bogl bogl (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Fernanda Herreros</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="85.0">$85</td>
+          <td class="right" data-mrr="108.0">$108</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
+          <td>2024-11-29</td>
+          <td class="center">495</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr style="background:#FFF9C4" data-plat="new">
+          <td>🇨🇱 Chile</td>
+          <td class="mono">1995636757527223-00017</td>
+          <td><strong>ACHOCLONADOS - UCSC - CONCEPCION EDIFICIO SAN AGUSTIN (17)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span class="badge badge-plan">FIJO</span></td>
+          <td class="right" data-mrr="-1"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td class="center">1</td>
+          <td>2026-02-28</td>
+          <td class="center">39</td>
+          <td class="center"><span class="badge badge-new">NEW</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="new">
+          <td>🇨🇱 Chile</td>
+          <td class="mono">1988413277429482-00001</td>
+          <td><strong>Strip del Valle (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Neyla Morales</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="67.0">$67</td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td class="center">1</td>
+          <td>2025-11-30</td>
+          <td class="center">129</td>
+          <td class="center"><span class="badge badge-new">NEW</span></td>
+        </tr>
+<tr style="background:#FFF9C4" data-plat="new">
+          <td>🇨🇱 Chile</td>
+          <td class="mono">1995636757527223-00004</td>
+          <td><strong>ACHOCLONADOS - MALL - MALL DEL CENTRO CONCEPCI�N (4)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span class="badge badge-plan">FIJO</span></td>
+          <td class="right" data-mrr="-1"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td class="center">2</td>
+          <td>2026-02-28</td>
+          <td class="center">39</td>
+          <td class="center"><span class="badge badge-new">NEW</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="new">
+          <td>🇨🇱 Chile</td>
+          <td class="mono">1646751260075537-00001</td>
+          <td><strong>Con Sabor Peruano (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span class="badge badge-plan"></span></td>
+          <td class="right" data-mrr="-1"></td>
+          <td></td>
+          <td>BILLING</td>
+          <td class="center">2</td>
+          <td></td>
+          <td class="center"></td>
+          <td class="center"><span class="badge badge-new">NEW</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="new">
+          <td>🇨🇱 Chile</td>
+          <td class="mono">1059700588572695-00001</td>
+          <td><strong>Don Jos� Local San Martin (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Katherine Boscan</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="-1"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td class="center">2</td>
+          <td>2025-04-30</td>
+          <td class="center">343</td>
+          <td class="center"><span class="badge badge-new">NEW</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="legacy">
+          <td>🇨🇴 Colombia</td>
+          <td class="mono">6217062533562368-00001</td>
+          <td><strong>Don Tulio Parrilla (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="32.0">$32</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
           <td>2022-12-31</td>
-          <td class="center">1193</td>
+          <td class="center">1194</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">4813784791515136-00001</td>
-          <td><strong>BIERGARTEN IGEL (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Fernanda Herreros</td>
+          <td>🇨🇴 Colombia</td>
+          <td class="mono">4836219673116672-00001</td>
+          <td><strong>Alaska House (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span class="badge badge-plan">BASICO</span></td>
+          <td class="right" data-mrr="32.0">$32</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">2</td>
+          <td></td>
+          <td class="center"></td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="legacy">
+          <td>🇨🇴 Colombia</td>
+          <td class="mono">5465921846378496-00004</td>
+          <td><strong>Q'Burger Esmeralda (4)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Jenthely Morales</td>
           <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
+          <td class="right" data-mrr="35.0">$35</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">2</td>
+          <td>2025-01-31</td>
+          <td class="center">432</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="legacy">
+          <td>🇲🇽 México</td>
+          <td class="mono">6514453423194112-00001</td>
+          <td><strong>La Autentica (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Alejandro Nolasco</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="50.0">$50</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
+          <td>2023-12-31</td>
+          <td class="center">829</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="legacy">
+          <td>🇲🇽 México</td>
+          <td class="mono">5807385613565952-00001</td>
+          <td><strong>En Humo BBQ (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Alejandro Nolasco</td>
+          <td><span class="badge badge-plan">BASICO</span></td>
+          <td class="right" data-mrr="96.0">$96</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">2</td>
+          <td>2023-10-31</td>
+          <td class="center">890</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="legacy">
+          <td>🇲🇽 México</td>
+          <td class="mono">4635047162413056-00001</td>
+          <td><strong>Eugenio El Del Caminito (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Jaqueline Lobaco</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="40.0">$40</td>
           <td>Baja</td>
           <td>40</td>
           <td class="center">2</td>
-          <td>2025-01-23</td>
-          <td class="center">439</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">6210693559222272-00001</td>
-          <td><strong>Barground (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Fernanda Herreros</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="43.0">$43</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">5714716440657920-00009</td>
-          <td><strong>Cinnabon Turbus (9)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Katherine Boscan</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="85.0">$85</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2022-02-28</td>
-          <td class="center">1499</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">5099734229975040-00005</td>
-          <td><strong>Gelatiamo Anibal Pinto (5)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Rafael Garcia</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="70.0">$70</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-11-19</td>
-          <td class="center">504</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">5055118636220416-00001</td>
-          <td><strong>La Princesa 2 (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Jose Antonio Silva</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="263.0">$263</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2022-07-31</td>
-          <td class="center">1346</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">5094893539164160-00002</td>
-          <td><strong>Room Dance Los Ángeles (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Fernanda Rossel</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2025-10-31</td>
-          <td class="center">158</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">4636916908032000-00001</td>
-          <td><strong>Vista Al Rio (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Rafael Garcia</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="85.0">$85</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1633105634842449-00010</td>
-          <td><strong>Buffet Express Costanera Center (10)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1633105634842449-00008</td>
-          <td><strong>Buffet Express Mall Pza. Norte (8)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1677626262387862-00002</td>
-          <td><strong>Antiguo- Sodexo Minning - Rajo Inca (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>María Fernanda Soto</td>
-          <td><span class="badge badge-plan">ENTERPRISE</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-02-18</td>
-          <td class="center">413</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1893062108276889-00001</td>
-          <td><strong>Baladi Sabor Gourmet (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Rafael Garcia</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="42.0">$42</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-06-30</td>
-          <td class="center">281</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">4957477716492288-00001</td>
-          <td><strong>HC Spa (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Rafael Garcia</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="107.0">$107</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-03-18</td>
-          <td class="center">385</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1374694907784438-00001</td>
-          <td><strong>L� vegetariano (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Neyla Morales</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="76.0">$76</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-11-01</td>
-          <td class="center">157</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">5528444315238400-00001</td>
-          <td><strong>OVO DISCOTEQUE (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Fernanda Herreros</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="198.0">$198</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2023-12-31</td>
-          <td class="center">828</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1137200355848314-00001</td>
-          <td><strong>Pollo Express 962 (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Katherine Boscan</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="149.0">$149</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-04-30</td>
-          <td class="center">342</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1478257541735847-00001</td>
-          <td><strong>SDP, Sandwich de Parrilla (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Katherine Boscan</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-10-31</td>
-          <td class="center">158</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00004</td>
-          <td><strong>CC Fontanar Mochi Mochi Soul ice cream (4)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="43.0">$43</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00012</td>
-          <td><strong>CC La Serrezuela Mochi Mochi Soul ice cream (12)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="52.0">$52</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00005</td>
-          <td><strong>CC Mall Plaza Mochi Mochi Soul ice cream (5)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="55.0">$55</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00002</td>
-          <td><strong>CC Nuestro Bogotá Mochi Mochi Soul ice cream (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="41.0">$41</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00007</td>
-          <td><strong>CC Parque La Colina Mochi Mochi Soul ice cream (7)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="80.0">$80</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00008</td>
-          <td><strong>CC Viva Envigado Mochi Mochi Soul ice cream (8)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="46.0">$46</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00003</td>
-          <td><strong>Calle 90 Mochi Mochi Soul ice cream (3)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="40.0">$40</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00001</td>
-          <td><strong>MOCHI MOCHI ICE CREAM 116 (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="41.0">$41</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00014</td>
-          <td><strong>Mochi Mochi Ice Cream Plaza de las Americas (14)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="40.0">$40</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5465921846378496-00003</td>
-          <td><strong>Q'Burger Calle 93 (3)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Jenthely Morales</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="50.0">$50</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-12-31</td>
-          <td class="center">462</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5465921846378496-00006</td>
-          <td><strong>Q'Burger Chía (6)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Jenthely Morales</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="22.0">$22</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2025-01-31</td>
-          <td class="center">431</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5465921846378496-00007</td>
-          <td><strong>Q'Burger Gaitán (7)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Jenthely Morales</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="80.0">$80</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-12-31</td>
-          <td class="center">462</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5465921846378496-00005</td>
-          <td><strong>Q'Burger Suba (5)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Jenthely Morales</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="22.0">$22</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2025-01-31</td>
-          <td class="center">431</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5295714745450496-00002</td>
-          <td><strong>TACOS PRESIDENTE GALERIAS (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Jenthely Morales</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="100.0">$100</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2023-01-31</td>
-          <td class="center">1162</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#FFF9C4" data-plat="new">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">1035519219096527-00001</td>
-          <td><strong>Dark horse barrel (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
-          <td>Jenthely Morales</td>
-          <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right" data-mrr="23.0">$23</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td>2026-02-11</td>
-          <td class="center">55</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">1645777723123368-00001</td>
-          <td><strong>Doyo Disco (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Adriana Cadavid</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="37.0">$37</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td>2025-09-22</td>
-          <td class="center">197</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#FFF9C4" data-plat="new">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">1139248510177947-00001</td>
-          <td><strong>La Gloria Seafood (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="57.0">$57</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2026-03-08</td>
-          <td class="center">30</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#FFF9C4" data-plat="new">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">1303265661211625-00001</td>
-          <td><strong>The sitio (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
-          <td>Jenthely Morales</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="52.0">$52</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2026-02-03</td>
-          <td class="center">63</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇲🇽 México</td>
-          <td class="mono">4565979236532224-00001</td>
-          <td><strong>El Misterio (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Alejandro Nolasco</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="50.0">$50</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">1</td>
           <td>2024-01-31</td>
-          <td class="center">797</td>
+          <td class="center">798</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr style="background:#E8F5E9" data-plat="legacy">
           <td>🇲🇽 México</td>
-          <td class="mono">5076376004984832-00002</td>
-          <td><strong>Acento Café (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Jaqueline Lobaco</td>
-          <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right" data-mrr="28.0">$28</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2025-11-24</td>
-          <td class="center">134</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇲🇽 México</td>
-          <td class="mono">6747630655373312-00001</td>
-          <td><strong>Wagä (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td class="mono">5518484711800832-00001</td>
+          <td><strong>La Huey Barbacoa (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right" data-mrr="39.0">$39</td>
+          <td class="right" data-mrr="26.0">$26</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
-          <td></td>
-          <td class="center"></td>
+          <td>2024-01-31</td>
+          <td class="center">798</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="legacy">
+          <td>🇲🇽 México</td>
+          <td class="mono">5548819990839296-00001</td>
+          <td><strong>Tacos al vapor "El tio Rome" (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Alejandro Nolasco</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="56.0">$56</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">2</td>
+          <td>2024-11-03</td>
+          <td class="center">521</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr style="background:#E8F5E9" data-plat="new">
           <td>🇲🇽 México</td>
-          <td class="mono">1977259104250647-00001</td>
-          <td><strong>Centeno (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Alejandro Nolasco</td>
+          <td class="mono">1100411319170455-00001</td>
+          <td><strong>Punto M�gico Matriz (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
           <td class="right" data-mrr="78.0">$78</td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
-          <td>2025-04-30</td>
-          <td class="center">342</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇲🇽 México</td>
-          <td class="mono">1386018175923524-00001</td>
-          <td><strong>Luxury Discoteca (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Alejandro Nolasco</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="78.0">$78</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-08-29</td>
-          <td class="center">221</td>
+          <td>2025-05-08</td>
+          <td class="center">335</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
     </table>
@@ -873,7 +444,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2026-01-25</td>
-          <td class="center">72</td>
+          <td class="center">73</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="legacy">
@@ -887,7 +458,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2026-02-02</td>
-          <td class="center">64</td>
+          <td class="center">65</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="new">
@@ -901,35 +472,7 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-28</td>
-          <td class="center">38</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#FFF9C4" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1995636757527223-00030</td>
-          <td><strong>ACHOCLONADOS - DUOC - PLAZA VESPUCIO (30)</strong><span class="badge badge-early">⚡ EARLY</span></td>
-          <td>María Fernanda Soto</td>
-          <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td>2026-02-28</td>
-          <td class="center">38</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#FFF9C4" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1995636757527223-00005</td>
-          <td><strong>ACHOCLONADOS - DUOC - PUENTE ALTO (5)</strong><span class="badge badge-early">⚡ EARLY</span></td>
-          <td>María Fernanda Soto</td>
-          <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td>2026-02-28</td>
-          <td class="center">38</td>
+          <td class="center">39</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="new">
@@ -943,7 +486,7 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-28</td>
-          <td class="center">38</td>
+          <td class="center">39</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="new">
@@ -957,13 +500,13 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-28</td>
-          <td class="center">38</td>
+          <td class="center">39</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="new">
           <td>🇨🇱 Chile</td>
-          <td class="mono">1995636757527223-00020</td>
-          <td><strong>ACHOCLONADOS - UDLA - PROVIDENCIA (20)</strong><span class="badge badge-early">⚡ EARLY</span></td>
+          <td class="mono">1995636757527223-00017</td>
+          <td><strong>ACHOCLONADOS - UCSC - CONCEPCION EDIFICIO SAN AGUSTIN (17)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
           <td class="right" data-mrr="-1"></td>
@@ -971,49 +514,7 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-28</td>
-          <td class="center">38</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#FFF9C4" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1995636757527223-00021</td>
-          <td><strong>ACHOCLONADOS - UDLA - VI�A DEL MAR (21)</strong><span class="badge badge-early">⚡ EARLY</span></td>
-          <td>María Fernanda Soto</td>
-          <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td>2026-02-28</td>
-          <td class="center">38</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#FFF9C4" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1752657808714298-00001</td>
-          <td><strong>Buche (1)</strong><span class="badge badge-early">⚡ EARLY</span></td>
-          <td>Maria Martinez</td>
-          <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td>2026-01-31</td>
-          <td class="center">66</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#FFF9C4" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1995636757527223-00047</td>
-          <td><strong>CAFET�N - PUC - SAN JOAQUIN HALL UNIVERSITARIO (47)</strong><span class="badge badge-early">⚡ EARLY</span></td>
-          <td>María Fernanda Soto</td>
-          <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td>2026-02-28</td>
-          <td class="center">38</td>
+          <td class="center">39</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="new">
@@ -1027,7 +528,7 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-28</td>
-          <td class="center">38</td>
+          <td class="center">39</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="new">
@@ -1041,7 +542,21 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-28</td>
-          <td class="center">38</td>
+          <td class="center">39</td>
+          <td class="center"><span class="badge badge-new">NEW</span></td>
+        </tr>
+<tr style="background:#FFF9C4" data-plat="new">
+          <td>🇨🇱 Chile</td>
+          <td class="mono">1995636757527223-00004</td>
+          <td><strong>ACHOCLONADOS - MALL - MALL DEL CENTRO CONCEPCI�N (4)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span class="badge badge-plan">FIJO</span></td>
+          <td class="right" data-mrr="-1"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td class="center">2</td>
+          <td>2026-02-28</td>
+          <td class="center">39</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="new">
@@ -1055,13 +570,13 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-27</td>
-          <td class="center">39</td>
+          <td class="center">40</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="new">
           <td>🇨🇴 Colombia</td>
           <td class="mono">1035519219096527-00001</td>
-          <td><strong>Dark horse barrel (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
+          <td><strong>Dark horse barrel (1)</strong><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan">BASICO</span></td>
           <td class="right" data-mrr="23.0">$23</td>
@@ -1069,7 +584,7 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-11</td>
-          <td class="center">55</td>
+          <td class="center">56</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="new">
@@ -1083,35 +598,7 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-27</td>
-          <td class="center">39</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#FFF9C4" data-plat="new">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">1139248510177947-00001</td>
-          <td><strong>La Gloria Seafood (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="57.0">$57</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2026-03-08</td>
-          <td class="center">30</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#FFF9C4" data-plat="new">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">1303265661211625-00001</td>
-          <td><strong>The sitio (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
-          <td>Jenthely Morales</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="52.0">$52</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2026-02-03</td>
-          <td class="center">63</td>
+          <td class="center">40</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
     </table>
@@ -1165,7 +652,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2024-01-31</td>
-          <td class="center">797</td>
+          <td class="center">798</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1179,7 +666,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2022-07-31</td>
-          <td class="center">1346</td>
+          <td class="center">1347</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="legacy">
@@ -1193,49 +680,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2026-01-25</td>
-          <td class="center">72</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr data-plat="legacy">
-          <td>🇲🇽 México</td>
-          <td class="mono">5681206091579392-00001</td>
-          <td><strong>Cafetería omeyocan (1)</strong></td>
-          <td>Javiera C.Ramos</td>
-          <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right" data-mrr="23.0">$23</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">0</td>
-          <td>2023-03-31</td>
-          <td class="center">1103</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr data-plat="legacy">
-          <td>🇲🇽 México</td>
-          <td class="mono">6199039217106944-00001</td>
-          <td><strong>Delicias Tía Ana (1)</strong></td>
-          <td>Alejandro Nolasco</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="62.0">$62</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">0</td>
-          <td>2023-02-28</td>
-          <td class="center">1134</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr data-plat="legacy">
-          <td>🇲🇽 México</td>
-          <td class="mono">5146436557996032-00001</td>
-          <td><strong>Dulzzo Pastelería (1)</strong></td>
-          <td>Javiera C.Ramos</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="78.0">$78</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">0</td>
-          <td>2025-08-31</td>
-          <td class="center">219</td>
+          <td class="center">73</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1249,21 +694,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-03-19</td>
-          <td class="center">384</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr data-plat="legacy">
-          <td>🇲🇽 México</td>
-          <td class="mono">5271493523800064-00002</td>
-          <td><strong>Oyster House San Jose (2)</strong></td>
-          <td>Giovanni Soriano</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Baja</td>
-          <td>40</td>
-          <td class="center">0</td>
-          <td>2023-10-31</td>
-          <td class="center">889</td>
+          <td class="center">385</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1277,7 +708,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2022-06-30</td>
-          <td class="center">1377</td>
+          <td class="center">1378</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1291,7 +722,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2024-09-18</td>
-          <td class="center">566</td>
+          <td class="center">567</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1305,7 +736,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-12-12</td>
-          <td class="center">116</td>
+          <td class="center">117</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1324,20 +755,6 @@
         </tr>
 <tr data-plat="legacy">
           <td>🇲🇽 México</td>
-          <td class="mono">4682818199879680-00002</td>
-          <td><strong>Taquería Rodríguez La pasadita (2)</strong></td>
-          <td>Jaqueline Lobaco</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="120.0">$120</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">0</td>
-          <td>2024-12-04</td>
-          <td class="center">489</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr data-plat="legacy">
-          <td>🇲🇽 México</td>
           <td class="mono">4850306613116928-00001</td>
           <td><strong>Yaxte Verde & Dulce (1)</strong></td>
           <td>Alejandro Nolasco</td>
@@ -1347,27 +764,27 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-10-31</td>
-          <td class="center">158</td>
+          <td class="center">159</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
           <td>🇲🇽 México</td>
-          <td class="mono">4906070699278336-00001</td>
-          <td><strong>Chamorindo El Original (1)</strong></td>
-          <td>Javiera C.Ramos</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="78.0">$78</td>
+          <td class="mono">5076376004984832-00002</td>
+          <td><strong>Acento Café (2)</strong></td>
+          <td>Jaqueline Lobaco</td>
+          <td><span class="badge badge-plan">BASICO</span></td>
+          <td class="right" data-mrr="28.0">$28</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
-          <td>2025-03-13</td>
-          <td class="center">390</td>
+          <td>2025-11-24</td>
+          <td class="center">135</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
+<tr data-plat="legacy">
           <td>🇲🇽 México</td>
           <td class="mono">4565979236532224-00001</td>
-          <td><strong>El Misterio (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>El Misterio (1)</strong></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
           <td class="right" data-mrr="50.0">$50</td>
@@ -1375,7 +792,7 @@
           <td>40</td>
           <td class="center">1</td>
           <td>2024-01-31</td>
-          <td class="center">797</td>
+          <td class="center">798</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1389,7 +806,21 @@
           <td>40</td>
           <td class="center">1</td>
           <td>2024-11-21</td>
-          <td class="center">502</td>
+          <td class="center">503</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="legacy">
+          <td>🇲🇽 México</td>
+          <td class="mono">6514453423194112-00001</td>
+          <td><strong>La Autentica (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Alejandro Nolasco</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="50.0">$50</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
+          <td>2023-12-31</td>
+          <td class="center">829</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1403,49 +834,77 @@
           <td>40</td>
           <td class="center">1</td>
           <td>2025-03-04</td>
-          <td class="center">399</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇲🇽 México</td>
-          <td class="mono">5076376004984832-00002</td>
-          <td><strong>Acento Café (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Jaqueline Lobaco</td>
-          <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right" data-mrr="28.0">$28</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2025-11-24</td>
-          <td class="center">134</td>
+          <td class="center">400</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
           <td>🇲🇽 México</td>
-          <td class="mono">4868443047854080-00001</td>
-          <td><strong>Motulito (1)</strong></td>
-          <td>Alejandro Nolasco</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="57.0">$57</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-11-07</td>
-          <td class="center">516</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇲🇽 México</td>
           <td class="mono">6747630655373312-00001</td>
-          <td><strong>Wagä (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>Wagä (1)</strong></td>
           <td>Javiera C.Ramos</td>
           <td><span class="badge badge-plan">BASICO</span></td>
           <td class="right" data-mrr="39.0">$39</td>
           <td>Cartera</td>
           <td>40</td>
-          <td class="center">2</td>
+          <td class="center">1</td>
           <td></td>
           <td class="center"></td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="legacy">
+          <td>🇲🇽 México</td>
+          <td class="mono">5807385613565952-00001</td>
+          <td><strong>En Humo BBQ (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Alejandro Nolasco</td>
+          <td><span class="badge badge-plan">BASICO</span></td>
+          <td class="right" data-mrr="96.0">$96</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">2</td>
+          <td>2023-10-31</td>
+          <td class="center">890</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="legacy">
+          <td>🇲🇽 México</td>
+          <td class="mono">4635047162413056-00001</td>
+          <td><strong>Eugenio El Del Caminito (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Jaqueline Lobaco</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="40.0">$40</td>
+          <td>Baja</td>
+          <td>40</td>
+          <td class="center">2</td>
+          <td>2024-01-31</td>
+          <td class="center">798</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="legacy">
+          <td>🇲🇽 México</td>
+          <td class="mono">5518484711800832-00001</td>
+          <td><strong>La Huey Barbacoa (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Javiera C.Ramos</td>
+          <td><span class="badge badge-plan">BASICO</span></td>
+          <td class="right" data-mrr="26.0">$26</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">2</td>
+          <td>2024-01-31</td>
+          <td class="center">798</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="legacy">
+          <td>🇲🇽 México</td>
+          <td class="mono">5548819990839296-00001</td>
+          <td><strong>Tacos al vapor "El tio Rome" (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Alejandro Nolasco</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="56.0">$56</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">2</td>
+          <td>2024-11-03</td>
+          <td class="center">521</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1459,7 +918,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-03-31</td>
-          <td class="center">372</td>
+          <td class="center">373</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1473,7 +932,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2023-12-31</td>
-          <td class="center">828</td>
+          <td class="center">829</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1487,7 +946,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-09-07</td>
-          <td class="center">212</td>
+          <td class="center">213</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1529,7 +988,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2022-03-31</td>
-          <td class="center">1468</td>
+          <td class="center">1469</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1585,7 +1044,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2023-05-31</td>
-          <td class="center">1042</td>
+          <td class="center">1043</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1613,7 +1072,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-10-30</td>
-          <td class="center">159</td>
+          <td class="center">160</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1627,7 +1086,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2023-07-31</td>
-          <td class="center">981</td>
+          <td class="center">982</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1655,21 +1114,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2026-02-02</td>
-          <td class="center">64</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">4902138748207104-00003</td>
-          <td><strong>Ferias y Eventos (3)</strong></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="73.0">$73</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">0</td>
-          <td>2025-02-21</td>
-          <td class="center">410</td>
+          <td class="center">65</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1697,7 +1142,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2024-11-26</td>
-          <td class="center">497</td>
+          <td class="center">498</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1725,7 +1170,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2023-05-31</td>
-          <td class="center">1042</td>
+          <td class="center">1043</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1739,7 +1184,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2022-06-30</td>
-          <td class="center">1377</td>
+          <td class="center">1378</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1767,7 +1212,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-03-13</td>
-          <td class="center">390</td>
+          <td class="center">391</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1781,7 +1226,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2024-08-04</td>
-          <td class="center">611</td>
+          <td class="center">612</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1809,7 +1254,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2022-03-31</td>
-          <td class="center">1468</td>
+          <td class="center">1469</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1823,7 +1268,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2024-01-31</td>
-          <td class="center">797</td>
+          <td class="center">798</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1837,7 +1282,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-01-01</td>
-          <td class="center">461</td>
+          <td class="center">462</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1856,20 +1301,6 @@
         </tr>
 <tr data-plat="legacy">
           <td>🇨🇴 Colombia</td>
-          <td class="mono">6445052836577280-00001</td>
-          <td><strong>Pizzería Tío Tom (1)</strong></td>
-          <td>Jenthely Morales</td>
-          <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right" data-mrr="28.0">$28</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">0</td>
-          <td>2023-10-31</td>
-          <td class="center">889</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
           <td class="mono">6523766768926720-00004</td>
           <td><strong>Pollos La Riviera Soacha Parque (4)</strong></td>
           <td>Ricardo Robayo</td>
@@ -1879,7 +1310,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2024-09-20</td>
-          <td class="center">564</td>
+          <td class="center">565</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1907,7 +1338,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2022-06-30</td>
-          <td class="center">1377</td>
+          <td class="center">1378</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1921,7 +1352,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-07-30</td>
-          <td class="center">251</td>
+          <td class="center">252</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1935,7 +1366,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2024-08-03</td>
-          <td class="center">612</td>
+          <td class="center">613</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1963,7 +1394,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2022-02-28</td>
-          <td class="center">1499</td>
+          <td class="center">1500</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1977,7 +1408,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2022-03-31</td>
-          <td class="center">1468</td>
+          <td class="center">1469</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -1991,7 +1422,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2022-02-28</td>
-          <td class="center">1499</td>
+          <td class="center">1500</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2019,7 +1450,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2024-07-31</td>
-          <td class="center">615</td>
+          <td class="center">616</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2033,7 +1464,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-08-26</td>
-          <td class="center">224</td>
+          <td class="center">225</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2047,7 +1478,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-09-04</td>
-          <td class="center">215</td>
+          <td class="center">216</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2061,7 +1492,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2023-03-31</td>
-          <td class="center">1103</td>
+          <td class="center">1104</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2075,7 +1506,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2022-11-30</td>
-          <td class="center">1224</td>
+          <td class="center">1225</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2089,7 +1520,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2022-07-31</td>
-          <td class="center">1346</td>
+          <td class="center">1347</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2103,7 +1534,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2024-07-31</td>
-          <td class="center">615</td>
+          <td class="center">616</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2117,21 +1548,189 @@
           <td>40</td>
           <td class="center">1</td>
           <td>2023-04-30</td>
-          <td class="center">1073</td>
+          <td class="center">1074</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
           <td>🇨🇴 Colombia</td>
-          <td class="mono">6025113086590976-00005</td>
-          <td><strong>Famiglia Pizzeria Eventos (5)</strong></td>
+          <td class="mono">5238860998639616-00004</td>
+          <td><strong>CC Fontanar Mochi Mochi Soul ice cream (4)</strong></td>
           <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="81.0">$81</td>
+          <td><span class="badge badge-plan">CORPORATIVO</span></td>
+          <td class="right" data-mrr="43.0">$43</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">1</td>
-          <td>2025-03-24</td>
-          <td class="center">379</td>
+          <td>2024-09-01</td>
+          <td class="center">584</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
+          <td>🇨🇴 Colombia</td>
+          <td class="mono">5238860998639616-00012</td>
+          <td><strong>CC La Serrezuela Mochi Mochi Soul ice cream (12)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span class="badge badge-plan">CORPORATIVO</span></td>
+          <td class="right" data-mrr="52.0">$52</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
+          <td>2024-09-01</td>
+          <td class="center">584</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
+          <td>🇨🇴 Colombia</td>
+          <td class="mono">5238860998639616-00005</td>
+          <td><strong>CC Mall Plaza Mochi Mochi Soul ice cream (5)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span class="badge badge-plan">CORPORATIVO</span></td>
+          <td class="right" data-mrr="55.0">$55</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
+          <td>2024-09-01</td>
+          <td class="center">584</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
+          <td>🇨🇴 Colombia</td>
+          <td class="mono">5238860998639616-00002</td>
+          <td><strong>CC Nuestro Bogotá Mochi Mochi Soul ice cream (2)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span class="badge badge-plan">CORPORATIVO</span></td>
+          <td class="right" data-mrr="41.0">$41</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
+          <td>2024-09-01</td>
+          <td class="center">584</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
+          <td>🇨🇴 Colombia</td>
+          <td class="mono">5238860998639616-00007</td>
+          <td><strong>CC Parque La Colina Mochi Mochi Soul ice cream (7)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span class="badge badge-plan">CORPORATIVO</span></td>
+          <td class="right" data-mrr="80.0">$80</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
+          <td>2024-09-01</td>
+          <td class="center">584</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
+          <td>🇨🇴 Colombia</td>
+          <td class="mono">5238860998639616-00008</td>
+          <td><strong>CC Viva Envigado Mochi Mochi Soul ice cream (8)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span class="badge badge-plan">CORPORATIVO</span></td>
+          <td class="right" data-mrr="46.0">$46</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
+          <td>2024-09-01</td>
+          <td class="center">584</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
+          <td>🇨🇴 Colombia</td>
+          <td class="mono">5238860998639616-00003</td>
+          <td><strong>Calle 90 Mochi Mochi Soul ice cream (3)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span class="badge badge-plan">CORPORATIVO</span></td>
+          <td class="right" data-mrr="40.0">$40</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
+          <td>2024-09-01</td>
+          <td class="center">584</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="legacy">
+          <td>🇨🇴 Colombia</td>
+          <td class="mono">6217062533562368-00001</td>
+          <td><strong>Don Tulio Parrilla (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="32.0">$32</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
+          <td>2022-12-31</td>
+          <td class="center">1194</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
+          <td>🇨🇴 Colombia</td>
+          <td class="mono">5238860998639616-00001</td>
+          <td><strong>MOCHI MOCHI ICE CREAM 116 (1)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span class="badge badge-plan">CORPORATIVO</span></td>
+          <td class="right" data-mrr="41.0">$41</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
+          <td>2024-09-01</td>
+          <td class="center">584</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
+          <td>🇨🇴 Colombia</td>
+          <td class="mono">5238860998639616-00014</td>
+          <td><strong>Mochi Mochi Ice Cream Plaza de las Americas (14)</strong></td>
+          <td>Ricardo Robayo</td>
+          <td><span class="badge badge-plan">CORPORATIVO</span></td>
+          <td class="right" data-mrr="40.0">$40</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
+          <td></td>
+          <td class="center"></td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
+          <td>🇨🇴 Colombia</td>
+          <td class="mono">5465921846378496-00003</td>
+          <td><strong>Q'Burger Calle 93 (3)</strong></td>
+          <td>Jenthely Morales</td>
+          <td><span class="badge badge-plan">CORPORATIVO</span></td>
+          <td class="right" data-mrr="50.0">$50</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
+          <td>2024-12-31</td>
+          <td class="center">463</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
+          <td>🇨🇴 Colombia</td>
+          <td class="mono">5465921846378496-00006</td>
+          <td><strong>Q'Burger Chía (6)</strong></td>
+          <td>Jenthely Morales</td>
+          <td><span class="badge badge-plan">CORPORATIVO</span></td>
+          <td class="right" data-mrr="22.0">$22</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
+          <td>2025-01-31</td>
+          <td class="center">432</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
+          <td>🇨🇴 Colombia</td>
+          <td class="mono">5465921846378496-00007</td>
+          <td><strong>Q'Burger Gaitán (7)</strong></td>
+          <td>Jenthely Morales</td>
+          <td><span class="badge badge-plan">CORPORATIVO</span></td>
+          <td class="right" data-mrr="80.0">$80</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
+          <td>2024-12-31</td>
+          <td class="center">463</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2145,128 +1744,44 @@
           <td>40</td>
           <td class="center">1</td>
           <td>2025-01-31</td>
-          <td class="center">431</td>
+          <td class="center">432</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
+<tr data-plat="legacy">
           <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00004</td>
-          <td><strong>CC Fontanar Mochi Mochi Soul ice cream (4)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
+          <td class="mono">5465921846378496-00005</td>
+          <td><strong>Q'Burger Suba (5)</strong></td>
+          <td>Jenthely Morales</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="43.0">$43</td>
+          <td class="right" data-mrr="22.0">$22</td>
           <td>Cartera</td>
           <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
+          <td class="center">1</td>
+          <td>2025-01-31</td>
+          <td class="center">432</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
+<tr data-plat="legacy">
           <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00012</td>
-          <td><strong>CC La Serrezuela Mochi Mochi Soul ice cream (12)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="52.0">$52</td>
+          <td class="mono">5295714745450496-00002</td>
+          <td><strong>TACOS PRESIDENTE GALERIAS (2)</strong></td>
+          <td>Jenthely Morales</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="100.0">$100</td>
           <td>Cartera</td>
           <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
+          <td class="center">1</td>
+          <td>2023-01-31</td>
+          <td class="center">1163</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr style="background:#E8F5E9" data-plat="legacy">
           <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00005</td>
-          <td><strong>CC Mall Plaza Mochi Mochi Soul ice cream (5)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="55.0">$55</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00002</td>
-          <td><strong>CC Nuestro Bogotá Mochi Mochi Soul ice cream (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="41.0">$41</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00007</td>
-          <td><strong>CC Parque La Colina Mochi Mochi Soul ice cream (7)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="80.0">$80</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00008</td>
-          <td><strong>CC Viva Envigado Mochi Mochi Soul ice cream (8)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="46.0">$46</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00003</td>
-          <td><strong>Calle 90 Mochi Mochi Soul ice cream (3)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="40.0">$40</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00001</td>
-          <td><strong>MOCHI MOCHI ICE CREAM 116 (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="41.0">$41</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-09-01</td>
-          <td class="center">583</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5238860998639616-00014</td>
-          <td><strong>Mochi Mochi Ice Cream Plaza de las Americas (14)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="40.0">$40</td>
+          <td class="mono">4836219673116672-00001</td>
+          <td><strong>Alaska House (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Adriana Cadavid</td>
+          <td><span class="badge badge-plan">BASICO</span></td>
+          <td class="right" data-mrr="32.0">$32</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
@@ -2276,72 +1791,16 @@
         </tr>
 <tr style="background:#E8F5E9" data-plat="legacy">
           <td>🇨🇴 Colombia</td>
-          <td class="mono">5465921846378496-00003</td>
-          <td><strong>Q'Burger Calle 93 (3)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td class="mono">5465921846378496-00004</td>
+          <td><strong>Q'Burger Esmeralda (4)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Jenthely Morales</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="50.0">$50</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-12-31</td>
-          <td class="center">462</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5465921846378496-00006</td>
-          <td><strong>Q'Burger Chía (6)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Jenthely Morales</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="22.0">$22</td>
+          <td><span class="badge badge-plan"></span></td>
+          <td class="right" data-mrr="35.0">$35</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
           <td>2025-01-31</td>
-          <td class="center">431</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5465921846378496-00007</td>
-          <td><strong>Q'Burger Gaitán (7)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Jenthely Morales</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="80.0">$80</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-12-31</td>
-          <td class="center">462</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5465921846378496-00005</td>
-          <td><strong>Q'Burger Suba (5)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Jenthely Morales</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="22.0">$22</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2025-01-31</td>
-          <td class="center">431</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">5295714745450496-00002</td>
-          <td><strong>TACOS PRESIDENTE GALERIAS (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Jenthely Morales</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="100.0">$100</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2023-01-31</td>
-          <td class="center">1162</td>
+          <td class="center">432</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2369,7 +1828,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-05-31</td>
-          <td class="center">311</td>
+          <td class="center">312</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2383,7 +1842,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-11-18</td>
-          <td class="center">140</td>
+          <td class="center">141</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2414,10 +1873,10 @@
           <td class="center"></td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
+<tr data-plat="legacy">
           <td>🇦🇷 Argentina</td>
           <td class="mono">6323275950718976-00001</td>
-          <td><strong>Mariscal Patio Cervecero (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>Mariscal Patio Cervecero (1)</strong></td>
           <td>Camila Agüero</td>
           <td><span class="badge badge-plan">BASICO</span></td>
           <td class="right" data-mrr="17.0">$17</td>
@@ -2425,13 +1884,13 @@
           <td>40</td>
           <td class="center">2</td>
           <td>2022-08-31</td>
-          <td class="center">1315</td>
+          <td class="center">1316</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
+<tr data-plat="legacy">
           <td>🇦🇷 Argentina</td>
           <td class="mono">5588741840961536-00003</td>
-          <td><strong>Mona Bar (3)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>Mona Bar (3)</strong></td>
           <td>Camila Agüero</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
           <td class="right" data-mrr="32.0">$32</td>
@@ -2439,13 +1898,13 @@
           <td>40</td>
           <td class="center">2</td>
           <td>2025-05-16</td>
-          <td class="center">326</td>
+          <td class="center">327</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
+<tr data-plat="legacy">
           <td>🇦🇷 Argentina</td>
           <td class="mono">5588741840961536-00002</td>
-          <td><strong>Tampa (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>Tampa (2)</strong></td>
           <td>Camila Agüero</td>
           <td><span class="badge badge-plan"></span></td>
           <td class="right" data-mrr="28.0">$28</td>
@@ -2453,13 +1912,13 @@
           <td>40</td>
           <td class="center">2</td>
           <td>2023-05-31</td>
-          <td class="center">1042</td>
+          <td class="center">1043</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
+<tr data-plat="legacy">
           <td>🇦🇷 Argentina</td>
           <td class="mono">5002470618824704-00001</td>
-          <td><strong>WHATAFOOD (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>WHATAFOOD (1)</strong></td>
           <td>Camila Agüero</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
           <td class="right" data-mrr="28.0">$28</td>
@@ -2467,7 +1926,7 @@
           <td>40</td>
           <td class="center">2</td>
           <td>2023-04-30</td>
-          <td class="center">1073</td>
+          <td class="center">1074</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2481,7 +1940,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2024-10-30</td>
-          <td class="center">524</td>
+          <td class="center">525</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2509,7 +1968,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-03-25</td>
-          <td class="center">378</td>
+          <td class="center">379</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2523,7 +1982,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-05-22</td>
-          <td class="center">320</td>
+          <td class="center">321</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2537,21 +1996,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2024-07-26</td>
-          <td class="center">620</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">5668224825294848-00002</td>
-          <td><strong>Café Oyku (2)</strong></td>
-          <td>Maria Martinez</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="81.0">$81</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">0</td>
-          <td>2023-10-31</td>
-          <td class="center">889</td>
+          <td class="center">621</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2565,7 +2010,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2024-07-01</td>
-          <td class="center">645</td>
+          <td class="center">646</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2579,21 +2024,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2022-11-30</td>
-          <td class="center">1224</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">6603374725955584-00002</td>
-          <td><strong>Chilenazo Santiago (2)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>40</td>
-          <td class="center">0</td>
-          <td></td>
-          <td class="center"></td>
+          <td class="center">1225</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2607,7 +2038,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2022-01-31</td>
-          <td class="center">1527</td>
+          <td class="center">1528</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2635,7 +2066,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-08-02</td>
-          <td class="center">248</td>
+          <td class="center">249</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2649,7 +2080,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2023-07-31</td>
-          <td class="center">981</td>
+          <td class="center">982</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2663,7 +2094,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2023-07-31</td>
-          <td class="center">981</td>
+          <td class="center">982</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2677,7 +2108,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2024-03-31</td>
-          <td class="center">737</td>
+          <td class="center">738</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2696,6 +2127,20 @@
         </tr>
 <tr data-plat="legacy">
           <td>🇨🇱 Chile</td>
+          <td class="mono">4840154478542848-00001</td>
+          <td><strong>Explorers House Punta Arenas (1)</strong></td>
+          <td>Jose Antonio Silva</td>
+          <td><span class="badge badge-plan">FIJO</span></td>
+          <td class="right" data-mrr="285.0">$285</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">0</td>
+          <td>2024-11-13</td>
+          <td class="center">511</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
+          <td>🇨🇱 Chile</td>
           <td class="mono">5553775127035904-00001</td>
           <td><strong>Forá (1)</strong></td>
           <td>Jose Antonio Silva</td>
@@ -2705,7 +2150,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2022-04-30</td>
-          <td class="center">1438</td>
+          <td class="center">1439</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2719,7 +2164,21 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2026-01-03</td>
-          <td class="center">94</td>
+          <td class="center">95</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
+          <td>🇨🇱 Chile</td>
+          <td class="mono">5206454834823168-00002</td>
+          <td><strong>Gallardia (2)</strong></td>
+          <td>Maria Martinez</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="98.0">$98</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">0</td>
+          <td></td>
+          <td class="center"></td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2733,7 +2192,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2023-08-31</td>
-          <td class="center">950</td>
+          <td class="center">951</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2747,7 +2206,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-01-03</td>
-          <td class="center">459</td>
+          <td class="center">460</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2761,7 +2220,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2024-09-20</td>
-          <td class="center">564</td>
+          <td class="center">565</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2776,20 +2235,6 @@
           <td class="center">0</td>
           <td></td>
           <td class="center"></td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">4922080046612480-00001</td>
-          <td><strong>London Coffee 5 (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Jose Antonio Silva</td>
-          <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right" data-mrr="33.0">$33</td>
-          <td>Hibernación</td>
-          <td>40</td>
-          <td class="center">0</td>
-          <td>2022-12-31</td>
-          <td class="center">1193</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2817,7 +2262,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2023-10-31</td>
-          <td class="center">889</td>
+          <td class="center">890</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2831,7 +2276,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-04-25</td>
-          <td class="center">347</td>
+          <td class="center">348</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2859,7 +2304,21 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2023-12-31</td>
-          <td class="center">828</td>
+          <td class="center">829</td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
+          <td>🇨🇱 Chile</td>
+          <td class="mono">4588033392246784-00010</td>
+          <td><strong>Rendibu Portal Centro (10)</strong></td>
+          <td>Fernanda Rossel</td>
+          <td><span class="badge badge-plan"></span></td>
+          <td class="right" data-mrr="85.0">$85</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">0</td>
+          <td>2024-12-11</td>
+          <td class="center">483</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2887,7 +2346,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-04-20</td>
-          <td class="center">352</td>
+          <td class="center">353</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2901,7 +2360,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2025-03-25</td>
-          <td class="center">378</td>
+          <td class="center">379</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2915,7 +2374,7 @@
           <td>40</td>
           <td class="center">0</td>
           <td>2022-02-28</td>
-          <td class="center">1499</td>
+          <td class="center">1500</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2932,10 +2391,24 @@
           <td class="center"></td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
+<tr data-plat="legacy">
+          <td>🇨🇱 Chile</td>
+          <td class="mono">5665661129588736-00001</td>
+          <td><strong>Ánima Pastelería (1)</strong></td>
+          <td>Neyla Morales</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="85.0">$85</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">0</td>
+          <td></td>
+          <td class="center"></td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
           <td>🇨🇱 Chile</td>
           <td class="mono">4877187191406592-00001</td>
-          <td><strong>Aitué Restobar (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>Aitué Restobar (1)</strong></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
           <td class="right" data-mrr="85.0">$85</td>
@@ -2944,6 +2417,20 @@
           <td class="center">1</td>
           <td></td>
           <td class="center"></td>
+          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
+        </tr>
+<tr data-plat="legacy">
+          <td>🇨🇱 Chile</td>
+          <td class="mono">5714716440657920-00009</td>
+          <td><strong>Cinnabon Turbus (9)</strong></td>
+          <td>Katherine Boscan</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="85.0">$85</td>
+          <td>Cartera</td>
+          <td>40</td>
+          <td class="center">1</td>
+          <td>2022-02-28</td>
+          <td class="center">1500</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -2960,28 +2447,14 @@
           <td class="center"></td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
-<tr data-plat="legacy">
+<tr style="background:#E8F5E9" data-plat="legacy">
           <td>🇨🇱 Chile</td>
-          <td class="mono">4840154478542848-00001</td>
-          <td><strong>Explorers House Punta Arenas (1)</strong></td>
-          <td>Jose Antonio Silva</td>
-          <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right" data-mrr="285.0">$285</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">1</td>
-          <td>2024-11-13</td>
-          <td class="center">510</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">5206454834823168-00002</td>
-          <td><strong>Gallardia (2)</strong></td>
-          <td>Maria Martinez</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="98.0">$98</td>
-          <td>Cartera</td>
+          <td class="mono">5800692414152704-00005</td>
+          <td><strong>Kaffe Laguna (5)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Sin KAM</td>
+          <td><span class="badge badge-plan"></span></td>
+          <td class="right" data-mrr="-1"></td>
+          <td></td>
           <td>40</td>
           <td class="center">1</td>
           <td></td>
@@ -2999,7 +2472,7 @@
           <td>40</td>
           <td class="center">1</td>
           <td>2024-09-30</td>
-          <td class="center">554</td>
+          <td class="center">555</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -3013,7 +2486,7 @@
           <td>40</td>
           <td class="center">1</td>
           <td>2022-01-31</td>
-          <td class="center">1527</td>
+          <td class="center">1528</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
@@ -3027,41 +2500,13 @@
           <td>40</td>
           <td class="center">1</td>
           <td>2025-01-20</td>
-          <td class="center">442</td>
+          <td class="center">443</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
 <tr data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">4588033392246784-00010</td>
-          <td><strong>Rendibu Portal Centro (10)</strong></td>
-          <td>Fernanda Rossel</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="85.0">$85</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">1</td>
-          <td>2024-12-11</td>
-          <td class="center">482</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">5665661129588736-00001</td>
-          <td><strong>Ánima Pastelería (1)</strong></td>
-          <td>Neyla Morales</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="85.0">$85</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
           <td>🇨🇱 Chile</td>
           <td class="mono">4651354962001920-00001</td>
-          <td><strong>Azteca Restobar (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>Azteca Restobar (1)</strong></td>
           <td>Maria Martinez</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
           <td class="right" data-mrr="85.0">$85</td>
@@ -3069,13 +2514,13 @@
           <td>40</td>
           <td class="center">2</td>
           <td>2022-12-31</td>
-          <td class="center">1193</td>
+          <td class="center">1194</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
+<tr data-plat="legacy">
           <td>🇨🇱 Chile</td>
           <td class="mono">4813784791515136-00001</td>
-          <td><strong>BIERGARTEN IGEL (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>BIERGARTEN IGEL (1)</strong></td>
           <td>Fernanda Herreros</td>
           <td><span class="badge badge-plan"></span></td>
           <td class="right" data-mrr="-1"></td>
@@ -3083,13 +2528,13 @@
           <td>40</td>
           <td class="center">2</td>
           <td>2025-01-23</td>
-          <td class="center">439</td>
+          <td class="center">440</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
+<tr data-plat="legacy">
           <td>🇨🇱 Chile</td>
           <td class="mono">6210693559222272-00001</td>
-          <td><strong>Barground (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>Barground (1)</strong></td>
           <td>Fernanda Herreros</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
           <td class="right" data-mrr="43.0">$43</td>
@@ -3102,50 +2547,22 @@
         </tr>
 <tr style="background:#E8F5E9" data-plat="legacy">
           <td>🇨🇱 Chile</td>
-          <td class="mono">5714716440657920-00009</td>
-          <td><strong>Cinnabon Turbus (9)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Katherine Boscan</td>
+          <td class="mono">4840609814282240-00001</td>
+          <td><strong>Bogl bogl (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Fernanda Herreros</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="85.0">$85</td>
+          <td class="right" data-mrr="108.0">$108</td>
           <td>Cartera</td>
           <td>40</td>
           <td class="center">2</td>
-          <td>2022-02-28</td>
-          <td class="center">1499</td>
+          <td>2024-11-29</td>
+          <td class="center">495</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">5099734229975040-00005</td>
-          <td><strong>Gelatiamo Anibal Pinto (5)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Rafael Garcia</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="70.0">$70</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2024-11-19</td>
-          <td class="center">504</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">5055118636220416-00001</td>
-          <td><strong>La Princesa 2 (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Jose Antonio Silva</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="263.0">$263</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">2</td>
-          <td>2022-07-31</td>
-          <td class="center">1346</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
+<tr data-plat="legacy">
           <td>🇨🇱 Chile</td>
           <td class="mono">5094893539164160-00002</td>
-          <td><strong>Room Dance Los Ángeles (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>Room Dance Los Ángeles (2)</strong></td>
           <td>Fernanda Rossel</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
           <td class="right" data-mrr="-1"></td>
@@ -3153,13 +2570,13 @@
           <td>40</td>
           <td class="center">2</td>
           <td>2025-10-31</td>
-          <td class="center">158</td>
+          <td class="center">159</td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
-<tr style="background:#E8F5E9" data-plat="legacy">
+<tr data-plat="legacy">
           <td>🇨🇱 Chile</td>
           <td class="mono">4636916908032000-00001</td>
-          <td><strong>Vista Al Rio (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>Vista Al Rio (1)</strong></td>
           <td>Rafael Garcia</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
           <td class="right" data-mrr="85.0">$85</td>
@@ -3184,20 +2601,6 @@
           <td class="center"></td>
           <td class="center"><span class="badge badge-legacy">Legacy</span></td>
         </tr>
-<tr data-plat="legacy">
-          <td>🇵🇪 Perú</td>
-          <td class="mono">5089205377695744-00001</td>
-          <td><strong>CC Restaurantes SAC - Lince (1)</strong></td>
-          <td>Rafael Garcia</td>
-          <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right" data-mrr="142.0">$142</td>
-          <td>Cartera</td>
-          <td>40</td>
-          <td class="center">1</td>
-          <td>2024-10-31</td>
-          <td class="center">523</td>
-          <td class="center"><span class="badge badge-legacy">Legacy</span></td>
-        </tr>
 <tr style="background:#FFF9C4" data-plat="new">
           <td>🇨🇱 Chile</td>
           <td class="mono">1995636757527223-00007</td>
@@ -3209,35 +2612,7 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-28</td>
-          <td class="center">38</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#FFF9C4" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1995636757527223-00030</td>
-          <td><strong>ACHOCLONADOS - DUOC - PLAZA VESPUCIO (30)</strong><span class="badge badge-early">⚡ EARLY</span></td>
-          <td>María Fernanda Soto</td>
-          <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td>2026-02-28</td>
-          <td class="center">38</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#FFF9C4" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1995636757527223-00005</td>
-          <td><strong>ACHOCLONADOS - DUOC - PUENTE ALTO (5)</strong><span class="badge badge-early">⚡ EARLY</span></td>
-          <td>María Fernanda Soto</td>
-          <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td>2026-02-28</td>
-          <td class="center">38</td>
+          <td class="center">39</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="new">
@@ -3251,7 +2626,7 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-28</td>
-          <td class="center">38</td>
+          <td class="center">39</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr data-plat="new">
@@ -3279,13 +2654,13 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-28</td>
-          <td class="center">38</td>
+          <td class="center">39</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="new">
           <td>🇨🇱 Chile</td>
-          <td class="mono">1995636757527223-00020</td>
-          <td><strong>ACHOCLONADOS - UDLA - PROVIDENCIA (20)</strong><span class="badge badge-early">⚡ EARLY</span></td>
+          <td class="mono">1995636757527223-00017</td>
+          <td><strong>ACHOCLONADOS - UCSC - CONCEPCION EDIFICIO SAN AGUSTIN (17)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
           <td>María Fernanda Soto</td>
           <td><span class="badge badge-plan">FIJO</span></td>
           <td class="right" data-mrr="-1"></td>
@@ -3293,55 +2668,55 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-28</td>
-          <td class="center">38</td>
+          <td class="center">39</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
-<tr style="background:#FFF9C4" data-plat="new">
+<tr data-plat="new">
           <td>🇨🇱 Chile</td>
-          <td class="mono">1995636757527223-00021</td>
-          <td><strong>ACHOCLONADOS - UDLA - VI�A DEL MAR (21)</strong><span class="badge badge-early">⚡ EARLY</span></td>
+          <td class="mono">1677626262387862-00004</td>
+          <td><strong>Antiguo- Sodexo Minning - Kinross (4)</strong></td>
           <td>María Fernanda Soto</td>
-          <td><span class="badge badge-plan">FIJO</span></td>
+          <td><span class="badge badge-plan">ENTERPRISE</span></td>
+          <td class="right" data-mrr="60.0">$60</td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td class="center">1</td>
+          <td>2025-04-24</td>
+          <td class="center">349</td>
+          <td class="center"><span class="badge badge-new">NEW</span></td>
+        </tr>
+<tr data-plat="new">
+          <td>🇨🇱 Chile</td>
+          <td class="mono">1677626262387862-00002</td>
+          <td><strong>Antiguo- Sodexo Minning - Rajo Inca (2)</strong></td>
+          <td>María Fernanda Soto</td>
+          <td><span class="badge badge-plan">ENTERPRISE</span></td>
           <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
-          <td>2026-02-28</td>
-          <td class="center">38</td>
+          <td>2025-02-18</td>
+          <td class="center">414</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
-<tr style="background:#FFF9C4" data-plat="new">
+<tr data-plat="new">
           <td>🇨🇱 Chile</td>
-          <td class="mono">1752657808714298-00001</td>
-          <td><strong>Buche (1)</strong><span class="badge badge-early">⚡ EARLY</span></td>
+          <td class="mono">1269584288710047-00001</td>
+          <td><strong>Botiller�a el Tata (1)</strong></td>
           <td>Maria Martinez</td>
-          <td><span class="badge badge-plan">BASICO</span></td>
+          <td><span class="badge badge-plan">FOODSTORE</span></td>
           <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
-          <td>2026-01-31</td>
-          <td class="center">66</td>
+          <td>2025-11-22</td>
+          <td class="center">137</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1633105634842449-00010</td>
-          <td><strong>Buffet Express Costanera Center (10)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
+<tr data-plat="new">
           <td>🇨🇱 Chile</td>
           <td class="mono">1633105634842449-00008</td>
-          <td><strong>Buffet Express Mall Pza. Norte (8)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>Buffet Express Mall Pza. Norte (8)</strong></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
           <td class="right" data-mrr="-1"></td>
@@ -3350,20 +2725,6 @@
           <td class="center">1</td>
           <td></td>
           <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#FFF9C4" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1995636757527223-00047</td>
-          <td><strong>CAFET�N - PUC - SAN JOAQUIN HALL UNIVERSITARIO (47)</strong><span class="badge badge-early">⚡ EARLY</span></td>
-          <td>María Fernanda Soto</td>
-          <td><span class="badge badge-plan">FIJO</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td>2026-02-28</td>
-          <td class="center">38</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="new">
@@ -3377,101 +2738,17 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-28</td>
-          <td class="center">38</td>
+          <td class="center">39</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr data-plat="new">
           <td>🇨🇱 Chile</td>
-          <td class="mono">1188957230956338-00001</td>
-          <td><strong>Casino Nuria (1)</strong></td>
-          <td>Katherine Boscan</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="-1"></td>
+          <td class="mono">1901820945605337-00001</td>
+          <td><strong>Chuchurros (1)</strong></td>
+          <td>Neyla Morales</td>
+          <td><span class="badge badge-plan">BASICO</span></td>
+          <td class="right" data-mrr="64.0">$64</td>
           <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td>2025-11-24</td>
-          <td class="center">134</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1493434486657908-00011</td>
-          <td><strong>Claro Vip Hamburguesas - Claro Arena (11)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1493434486657908-00012</td>
-          <td><strong>Claro Vip Hotdog - Claro Arena (12)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1085503755308679-00001</td>
-          <td><strong>Don Jos� Local 918 (1)</strong></td>
-          <td>Katherine Boscan</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="198.0">$198</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td>2025-04-25</td>
-          <td class="center">347</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1472074830032687-00001</td>
-          <td><strong>Empanadas Pitrufquen (1)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1493434486657908-00003</td>
-          <td><strong>Fouilloux Hamburguesas - Claro Arena (3)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1493434486657908-00004</td>
-          <td><strong>Fouilloux Hotdog - Claro Arena (4)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
           <td>BILLING</td>
           <td class="center">1</td>
           <td></td>
@@ -3494,170 +2771,16 @@
         </tr>
 <tr data-plat="new">
           <td>🇨🇱 Chile</td>
-          <td class="mono">1493434486657908-00002</td>
-          <td><strong>Lepe Hotdog - Claro Arena (2)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1493434486657908-00007</td>
-          <td><strong>Livingston Hamburguesas - Claro Arena (7)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1493434486657908-00008</td>
-          <td><strong>Livingston Hotdog - Claro Arena (8)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1493434486657908-00009</td>
-          <td><strong>Livingston Snack Norte - Claro Arena (9)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1493434486657908-00010</td>
-          <td><strong>Livingston Snack Sur - Claro Arena (10)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1493434486657908-00014</td>
-          <td><strong>Lounge B Cafeter�a - Claro Arena (14)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1493434486657908-00016</td>
-          <td><strong>Lounge D Cafeter�a - Claro Arena (16)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1949626846882912-00001</td>
-          <td><strong>Prensa Caf� (1)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1493434486657908-00005</td>
-          <td><strong>Prieto Hamburguesas - Claro Arena (5)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1493434486657908-00006</td>
-          <td><strong>Prieto Hotdog - Claro Arena (6)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1443666087582398-00001</td>
-          <td><strong>Restorant Nuria 964 (1)</strong></td>
-          <td>Katherine Boscan</td>
+          <td class="mono">1851536478885878-00001</td>
+          <td><strong>Maki Club (1)</strong></td>
+          <td>Fernanda Rossel</td>
           <td><span class="badge badge-plan">CORPORATIVO</span></td>
           <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">1</td>
-          <td>2025-04-30</td>
-          <td class="center">342</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1457304239671705-00001</td>
-          <td><strong>SANTO PECADO (1)</strong></td>
-          <td>Katherine Boscan</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td>2025-09-26</td>
-          <td class="center">193</td>
+          <td>2025-11-28</td>
+          <td class="center">131</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr data-plat="new">
@@ -3674,6 +2797,20 @@
           <td class="center"></td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
+<tr style="background:#E8F5E9" data-plat="new">
+          <td>🇨🇱 Chile</td>
+          <td class="mono">1988413277429482-00001</td>
+          <td><strong>Strip del Valle (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Neyla Morales</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="67.0">$67</td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td class="center">1</td>
+          <td>2025-11-30</td>
+          <td class="center">129</td>
+          <td class="center"><span class="badge badge-new">NEW</span></td>
+        </tr>
 <tr style="background:#FFF9C4" data-plat="new">
           <td>🇨🇱 Chile</td>
           <td class="mono">1995636757527223-00056</td>
@@ -3685,13 +2822,27 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-28</td>
-          <td class="center">38</td>
+          <td class="center">39</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
-<tr data-plat="new">
+<tr style="background:#FFF9C4" data-plat="new">
           <td>🇨🇱 Chile</td>
-          <td class="mono">1392945238313465-00001</td>
-          <td><strong>Amatista (1)</strong></td>
+          <td class="mono">1995636757527223-00004</td>
+          <td><strong>ACHOCLONADOS - MALL - MALL DEL CENTRO CONCEPCI�N (4)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
+          <td>María Fernanda Soto</td>
+          <td><span class="badge badge-plan">FIJO</span></td>
+          <td class="right" data-mrr="-1"></td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td class="center">2</td>
+          <td>2026-02-28</td>
+          <td class="center">39</td>
+          <td class="center"><span class="badge badge-new">NEW</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="new">
+          <td>🇨🇱 Chile</td>
+          <td class="mono">1646751260075537-00001</td>
+          <td><strong>Con Sabor Peruano (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Sin KAM</td>
           <td><span class="badge badge-plan"></span></td>
           <td class="right" data-mrr="-1"></td>
@@ -3702,136 +2853,24 @@
           <td class="center"></td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1677626262387862-00004</td>
-          <td><strong>Antiguo- Sodexo Minning - Kinross (4)</strong></td>
-          <td>María Fernanda Soto</td>
-          <td><span class="badge badge-plan">ENTERPRISE</span></td>
-          <td class="right" data-mrr="60.0">$60</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-04-24</td>
-          <td class="center">348</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
 <tr style="background:#E8F5E9" data-plat="new">
           <td>🇨🇱 Chile</td>
-          <td class="mono">1677626262387862-00002</td>
-          <td><strong>Antiguo- Sodexo Minning - Rajo Inca (2)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>María Fernanda Soto</td>
-          <td><span class="badge badge-plan">ENTERPRISE</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-02-18</td>
-          <td class="center">413</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1893062108276889-00001</td>
-          <td><strong>Baladi Sabor Gourmet (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Rafael Garcia</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="42.0">$42</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-06-30</td>
-          <td class="center">281</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1269584288710047-00001</td>
-          <td><strong>Botiller�a el Tata (1)</strong></td>
-          <td>Maria Martinez</td>
-          <td><span class="badge badge-plan">FOODSTORE</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-11-22</td>
-          <td class="center">136</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1901820945605337-00001</td>
-          <td><strong>Chuchurros (1)</strong></td>
-          <td>Neyla Morales</td>
-          <td><span class="badge badge-plan">BASICO</span></td>
-          <td class="right" data-mrr="64.0">$64</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1192041931551068-00001</td>
-          <td><strong>Club Olimpo (1)</strong></td>
-          <td>Fernanda Herreros</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-11-29</td>
-          <td class="center">129</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">5019480794857472-00001</td>
-          <td><strong>Eventos Club Providencia (1)</strong></td>
+          <td class="mono">1059700588572695-00001</td>
+          <td><strong>Don Jos� Local San Martin (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
           <td>Katherine Boscan</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="208.0">$208</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="-1"></td>
           <td>Cartera</td>
           <td>BILLING</td>
           <td class="center">2</td>
-          <td>2023-02-28</td>
-          <td class="center">1134</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">4957477716492288-00001</td>
-          <td><strong>HC Spa (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Rafael Garcia</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="107.0">$107</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-03-18</td>
-          <td class="center">385</td>
+          <td>2025-04-30</td>
+          <td class="center">343</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1493434486657908-00001</td>
-          <td><strong>Lepe Hamburguesas - Claro Arena (1)</strong></td>
-          <td>Fernanda Rossel</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="247.0">$247</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
           <td>🇨🇱 Chile</td>
           <td class="mono">1374694907784438-00001</td>
-          <td><strong>L� vegetariano (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>L� vegetariano (1)</strong></td>
           <td>Neyla Morales</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
           <td class="right" data-mrr="76.0">$76</td>
@@ -3839,27 +2878,13 @@
           <td>BILLING</td>
           <td class="center">2</td>
           <td>2025-11-01</td>
-          <td class="center">157</td>
+          <td class="center">158</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr data-plat="new">
           <td>🇨🇱 Chile</td>
-          <td class="mono">1851536478885878-00001</td>
-          <td><strong>Maki Club (1)</strong></td>
-          <td>Fernanda Rossel</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-11-28</td>
-          <td class="center">130</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇱 Chile</td>
           <td class="mono">5528444315238400-00001</td>
-          <td><strong>OVO DISCOTEQUE (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>OVO DISCOTEQUE (1)</strong></td>
           <td>Fernanda Herreros</td>
           <td><span class="badge badge-plan"></span></td>
           <td class="right" data-mrr="198.0">$198</td>
@@ -3867,7 +2892,7 @@
           <td>BILLING</td>
           <td class="center">2</td>
           <td>2023-12-31</td>
-          <td class="center">828</td>
+          <td class="center">829</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr data-plat="new">
@@ -3881,35 +2906,21 @@
           <td>BILLING</td>
           <td class="center">2</td>
           <td>2025-10-01</td>
-          <td class="center">188</td>
+          <td class="center">189</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1137200355848314-00001</td>
-          <td><strong>Pollo Express 962 (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Katherine Boscan</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="149.0">$149</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-04-30</td>
-          <td class="center">342</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇨🇱 Chile</td>
-          <td class="mono">1478257541735847-00001</td>
-          <td><strong>SDP, Sandwich de Parrilla (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Katherine Boscan</td>
+<tr data-plat="new">
+          <td>🇲🇽 México</td>
+          <td class="mono">1977259104250647-00001</td>
+          <td><strong>Centeno (1)</strong></td>
+          <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="-1"></td>
+          <td class="right" data-mrr="78.0">$78</td>
           <td>Cartera</td>
           <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-10-31</td>
-          <td class="center">158</td>
+          <td class="center">1</td>
+          <td>2025-04-30</td>
+          <td class="center">343</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr data-plat="new">
@@ -3923,7 +2934,7 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2025-08-31</td>
-          <td class="center">219</td>
+          <td class="center">220</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr data-plat="new">
@@ -3937,41 +2948,13 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2025-11-30</td>
-          <td class="center">128</td>
+          <td class="center">129</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr data-plat="new">
           <td>🇲🇽 México</td>
-          <td class="mono">1134066317200388-00001</td>
-          <td><strong>BASICO (1)</strong></td>
-          <td>Javiera C.Ramos</td>
-          <td><span class="badge badge-plan">CORPORATIVO</span></td>
-          <td class="right" data-mrr="119.0">$119</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-08-22</td>
-          <td class="center">228</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇲🇽 México</td>
-          <td class="mono">1977259104250647-00001</td>
-          <td><strong>Centeno (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
-          <td>Alejandro Nolasco</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="78.0">$78</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2025-04-30</td>
-          <td class="center">342</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#E8F5E9" data-plat="new">
-          <td>🇲🇽 México</td>
           <td class="mono">1386018175923524-00001</td>
-          <td><strong>Luxury Discoteca (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>Luxury Discoteca (1)</strong></td>
           <td>Alejandro Nolasco</td>
           <td><span class="badge badge-plan">AVANZADO</span></td>
           <td class="right" data-mrr="78.0">$78</td>
@@ -3979,7 +2962,21 @@
           <td>BILLING</td>
           <td class="center">2</td>
           <td>2025-08-29</td>
-          <td class="center">221</td>
+          <td class="center">222</td>
+          <td class="center"><span class="badge badge-new">NEW</span></td>
+        </tr>
+<tr style="background:#E8F5E9" data-plat="new">
+          <td>🇲🇽 México</td>
+          <td class="mono">1100411319170455-00001</td>
+          <td><strong>Punto M�gico Matriz (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td>Javiera C.Ramos</td>
+          <td><span class="badge badge-plan">AVANZADO</span></td>
+          <td class="right" data-mrr="78.0">$78</td>
+          <td>Cartera</td>
+          <td>BILLING</td>
+          <td class="center">2</td>
+          <td>2025-05-08</td>
+          <td class="center">335</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="new">
@@ -3993,7 +2990,7 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-27</td>
-          <td class="center">39</td>
+          <td class="center">40</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr data-plat="new">
@@ -4013,7 +3010,7 @@
 <tr style="background:#FFF9C4" data-plat="new">
           <td>🇨🇴 Colombia</td>
           <td class="mono">1035519219096527-00001</td>
-          <td><strong>Dark horse barrel (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
+          <td><strong>Dark horse barrel (1)</strong><span class="badge badge-early">⚡ EARLY</span></td>
           <td>Jenthely Morales</td>
           <td><span class="badge badge-plan">BASICO</span></td>
           <td class="right" data-mrr="23.0">$23</td>
@@ -4021,13 +3018,13 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-11</td>
-          <td class="center">55</td>
+          <td class="center">56</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
-<tr style="background:#E8F5E9" data-plat="new">
+<tr data-plat="new">
           <td>🇨🇴 Colombia</td>
           <td class="mono">1645777723123368-00001</td>
-          <td><strong>Doyo Disco (1)</strong><span class="badge badge-nuevo">NUEVO</span></td>
+          <td><strong>Doyo Disco (1)</strong></td>
           <td>Adriana Cadavid</td>
           <td><span class="badge badge-plan"></span></td>
           <td class="right" data-mrr="37.0">$37</td>
@@ -4035,7 +3032,7 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2025-09-22</td>
-          <td class="center">197</td>
+          <td class="center">198</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
 <tr style="background:#FFF9C4" data-plat="new">
@@ -4049,49 +3046,7 @@
           <td>BILLING</td>
           <td class="center">1</td>
           <td>2026-02-27</td>
-          <td class="center">39</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr data-plat="new">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">1837421458716100-00001</td>
-          <td><strong>Yucatan (1)</strong></td>
-          <td>Sin KAM</td>
-          <td><span class="badge badge-plan"></span></td>
-          <td class="right" data-mrr="-1"></td>
-          <td></td>
-          <td>BILLING</td>
-          <td class="center">1</td>
-          <td></td>
-          <td class="center"></td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#FFF9C4" data-plat="new">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">1139248510177947-00001</td>
-          <td><strong>La Gloria Seafood (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
-          <td>Ricardo Robayo</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="57.0">$57</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2026-03-08</td>
-          <td class="center">30</td>
-          <td class="center"><span class="badge badge-new">NEW</span></td>
-        </tr>
-<tr style="background:#FFF9C4" data-plat="new">
-          <td>🇨🇴 Colombia</td>
-          <td class="mono">1303265661211625-00001</td>
-          <td><strong>The sitio (1)</strong><span class="badge badge-nuevo">NUEVO</span><span class="badge badge-early">⚡ EARLY</span></td>
-          <td>Jenthely Morales</td>
-          <td><span class="badge badge-plan">AVANZADO</span></td>
-          <td class="right" data-mrr="52.0">$52</td>
-          <td>Cartera</td>
-          <td>BILLING</td>
-          <td class="center">2</td>
-          <td>2026-02-03</td>
-          <td class="center">63</td>
+          <td class="center">40</td>
           <td class="center"><span class="badge badge-new">NEW</span></td>
         </tr>
     </table>
@@ -4099,7 +3054,7 @@
 </div>
 
 <div class="footer">
-  <span>Actualizado: 07/04/2026 10:52 · Próximo: mañana 11:00 AM</span>
+  <span>Actualizado: 08/04/2026 15:50 · Próximo: mañana 11:00 AM</span>
   <a href="https://toteat.com">toteat.com</a>
 </div>
 
