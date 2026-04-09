@@ -59,6 +59,14 @@
   .ver-btn.new-active  { border-color: #FF4B33; background: #FF4B33; color: white; }
   .ver-btn.leg-active  { border-color: #6366F1; background: #6366F1; color: white; }
 
+  /* ── Country filter ── */
+  .country-filter select { padding: 6px 28px 6px 12px; border-radius: 20px; border: 1.5px solid #ddd;
+    font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 700; background: white;
+    color: #666; cursor: pointer; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23999'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 10px center; }
+  .country-filter select:focus { outline: none; border-color: #FF4B33; }
+
   /* ── Search ── */
   .search-wrap { padding: 12px 32px 8px; }
   .search-wrap input { width: 100%; max-width: 380px; padding: 9px 14px 9px 36px;
@@ -184,6 +192,17 @@
     <button class="tab active" onclick="switchTab('nuevos',this)">Nuevos (11)</button>
     <button class="tab" onclick="switchTab('early',this)">Early Churn (5)</button>
     <button class="tab" onclick="switchTab('total',this)">Total (166)</button>
+  </div>
+  <div class="country-filter">
+    <select id="countrySelect" onchange="applyFilters()">
+      <option value="">Todos los países</option>
+      <option value="Chile">🇨🇱 Chile</option>
+      <option value="Colombia">🇨🇴 Colombia</option>
+      <option value="México">🇲🇽 México</option>
+      <option value="Argentina">🇦🇷 Argentina</option>
+      <option value="Perú">🇵🇪 Perú</option>
+      <option value="España">🌎 España</option>
+    </select>
   </div>
   <div class="ver-filters">
     <button class="ver-btn active" onclick="filterVer('all',this)">Todos</button>
@@ -2811,13 +2830,16 @@ function filterVer(ver, btn) {
 
 function applyFilters() {
   const q = document.getElementById('search').value.toLowerCase();
+  const country = document.getElementById('countrySelect').value;
   const panel = document.querySelector('.panel.active');
   if (!panel) return;
   panel.querySelectorAll('table tr:not(:first-child)').forEach(row => {
     const matchText = !q || row.textContent.toLowerCase().includes(q);
     const platAttr  = row.getAttribute('data-plat') || '';
     const matchVer  = currentVer === 'all' || platAttr === currentVer;
-    row.style.display = (matchText && matchVer) ? '' : 'none';
+    const countryCell = row.cells[0] ? row.cells[0].textContent.trim() : '';
+    const matchCountry = !country || countryCell.includes(country);
+    row.style.display = (matchText && matchVer && matchCountry) ? '' : 'none';
   });
 }
 
